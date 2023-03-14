@@ -27350,8 +27350,7 @@ const MainView = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: movies.map((movie)=>{
             return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
-                movie: movie,
-                handleClick: handleClick
+                movie: movie
             }, movie.id, false, {
                 fileName: "src/components/main-view/main-view.jsx",
                 lineNumber: 59,
@@ -27498,7 +27497,7 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "MovieCard", ()=>MovieCard);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
-const MovieCard = ({ movie  })=>{
+const MovieCard = ({ movie , handleClick  })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         onClick: handleClick(movie),
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
