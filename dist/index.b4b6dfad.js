@@ -27341,7 +27341,7 @@ const MainView = ()=>{
                 Birth: "1970",
                 Death: null
             },
-            ImagePath: "inception.png",
+            ImagePath: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlMnFzleYH2PxfTzz084F3cHelZC9FeJ9Ir4vrlrKjZANPCiMJ",
             Featured: false
         }
     ]);
@@ -27380,7 +27380,7 @@ const MainView = ()=>{
         columnNumber: 9
     }, undefined);
 };
-_s(MainView, "xlePeZFe+EFjrt+LXLmqfVACi/0=");
+_s(MainView, "h32ln4Un7gxoH84y6qzoQTs7trI=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
