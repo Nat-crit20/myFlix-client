@@ -38,13 +38,29 @@ export const MainView = () =>{
               ImagePath: "https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg",
               Featured: false,
               id: 2
-          }
+          },
+          {
+            Title:"Inception",
+            Description: "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O., but his tragic past may doom the project and his team to disaster.",
+            Genre:  {
+            Name: "Thriller",
+            Description: "Thriller film, also known as suspense film or suspense thriller, is a broad film genre that involves excitement and suspense in the audience."
+          },
+            Director: {
+            Name: "Christopher Nolan",
+            Bio: "Over the course of 15 years of filmmaking, Nolan has gone from low-budget independent films to working on some of the biggest blockbusters ever made",
+            Birth: "1970",
+            Death: null
+          },
+            ImagePath: 'inception.png',
+            Featured: false
+        }
     ])
 
     const [selectedMovie, setSelectedMovie] = useState(null)
 
     if(selectedMovie){
-        return <MovieView movie={selectedMovie} onBackClick={()=>setSelectedMovie(null)}/>
+        return <MovieView movie={selectedMovie} onBackClick={()=>setSelectedMovie(null)} />
     }
     if(movies.length === 0){
         return <h1>There are no movies in the list</h1>
