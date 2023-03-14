@@ -142,9 +142,9 @@
       this[globalName] = mainExports;
     }
   }
-})({"b48Bu":[function(require,module,exports) {
-var Refresh = require("74a4676babc22750");
-var ErrorOverlay = require("84a5409d4764c2fa");
+})({"fcl9f":[function(require,module,exports) {
+var Refresh = require("17112f206d22594c");
+var ErrorOverlay = require("9d32931177d7a3ae");
 Refresh.injectIntoGlobalHook(window);
 window.$RefreshReg$ = function() {};
 window.$RefreshSig$ = function() {
@@ -163,11 +163,11 @@ window.addEventListener("parcelhmraccept", ()=>{
     ErrorOverlay.dismissRuntimeErrors();
 });
 
-},{"74a4676babc22750":"emToh","84a5409d4764c2fa":"7M53S"}],"emToh":[function(require,module,exports) {
+},{"17112f206d22594c":"jjeMq","9d32931177d7a3ae":"jmhNx"}],"jjeMq":[function(require,module,exports) {
 "use strict";
-module.exports = require("73e6bf4051e9aa25");
+module.exports = require("46dd7f133ee8858b");
 
-},{"73e6bf4051e9aa25":"1UtjR"}],"1UtjR":[function(require,module,exports) {
+},{"46dd7f133ee8858b":"d11Au"}],"d11Au":[function(require,module,exports) {
 /** @license React v0.9.0
  * react-refresh-runtime.development.js
  *
@@ -627,8 +627,8 @@ module.exports = require("73e6bf4051e9aa25");
     exports.setSignature = setSignature;
 })();
 
-},{}],"7M53S":[function(require,module,exports) {
-var process = require("b8a6a28cb63b519e");
+},{}],"jmhNx":[function(require,module,exports) {
+var process = require("c81b1a67b5d76a79");
 !function(e, t) {
     module.exports = t();
 }(window, function() {
@@ -2358,7 +2358,7 @@ var process = require("b8a6a28cb63b519e");
     ]);
 });
 
-},{"b8a6a28cb63b519e":"d5jf4"}],"d5jf4":[function(require,module,exports) {
+},{"c81b1a67b5d76a79":"d5jf4"}],"d5jf4":[function(require,module,exports) {
 // shim for using process in browser
 var process = module.exports = {};
 // cached from whatever global is present so that test runners that stub it
@@ -2503,7 +2503,7 @@ process.umask = function() {
     return 0;
 };
 
-},{}],"8wO3U":[function(require,module,exports) {
+},{}],"6UDAS":[function(require,module,exports) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
@@ -2959,7 +2959,7 @@ $RefreshReg$(_c, "MyFlixApplication");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","./index.scss":"lJZlQ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"uvMw5"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","./index.scss":"lJZlQ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4WJ66"}],"iTorj":[function(require,module,exports) {
 "use strict";
 module.exports = require("317d7fd8412c4184");
 
@@ -27144,9 +27144,9 @@ module.exports = require("cd7926fcfdd5b15e");
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === "function") __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
 })();
 
-},{}],"lJZlQ":[function() {},{}],"uvMw5":[function(require,module,exports) {
+},{}],"lJZlQ":[function() {},{}],"4WJ66":[function(require,module,exports) {
 "use strict";
-var Refresh = require("a0c05786bfcdaa56");
+var Refresh = require("50219b65fbaa41bb");
 function debounce(func, delay) {
     {
         let timeout = undefined;
@@ -27277,6 +27277,6 @@ function registerExportsForReactRefresh(module1) {
     }
 }
 
-},{"a0c05786bfcdaa56":"emToh"}]},["b48Bu","8wO3U","d8Dch"], "d8Dch", "parcelRequireaec4")
+},{"50219b65fbaa41bb":"jjeMq"}]},["fcl9f","6UDAS","d8Dch"], "d8Dch", "parcelRequireaec4")
 
 //# sourceMappingURL=index.b4b6dfad.js.map
