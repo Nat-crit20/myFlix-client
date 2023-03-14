@@ -53,7 +53,8 @@ export const MainView = () =>{
             Death: null
           },
             ImagePath: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlMnFzleYH2PxfTzz084F3cHelZC9FeJ9Ir4vrlrKjZANPCiMJ",
-            Featured: false
+            Featured: false,
+            id: 3
         }
     ])
 
