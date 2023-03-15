@@ -16,8 +16,9 @@ export const MainView = () =>{
       return (<div>
                 <MovieView movie={selectedMovie} onBackClick={()=>setSelectedMovie(null)} />
                 <br />
+                <h2>Similar Movies</h2>
                 {similarMovies.map((movie)=>{
-                  return <MovieCard movie={movie} key={movie.id} handleClick={(newSelectedMovie)=> {setSelectedMovie(newSelectedMovie)}} />
+                  return <MovieCard movie={movie} key={movie._id} handleClick={(newSelectedMovie)=> {setSelectedMovie(newSelectedMovie)}} />
                 })}
               </div>
               )
@@ -29,7 +30,7 @@ export const MainView = () =>{
     return (
         <div>
             {movies.map(movie=>{
-                return <MovieCard movie={movie} key={movie.id} handleClick={(newSelectedMovie)=> {setSelectedMovie(newSelectedMovie)}} />
+                return <MovieCard movie={movie} key={movie._id} handleClick={(newSelectedMovie)=> {setSelectedMovie(newSelectedMovie)}} />
             })}
         </div>
     )
