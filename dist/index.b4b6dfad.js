@@ -27293,73 +27293,54 @@ var _movieView = require("../movie-view/movie-view");
 var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
-    const [movies, setMovies] = (0, _react.useState)([
-        {
-            Title: "Silence of the Lambs",
-            Description: "A young FBI cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer.",
-            Genre: {
-                Name: "Thriller",
-                Description: "Thriller film, also known as suspense film or suspense thriller, is a broad film genre that involves excitement and suspense in the audience."
-            },
-            Director: {
-                Name: "Jonathan Demme",
-                Bio: "Robert Jonathan Demme was an American director, producer, and screenwriter.",
-                Birth: "1944",
-                Death: "2017"
-            },
-            ImagePath: "https://m.media-amazon.com/images/M/MV5BNjNhZTk0ZmEtNjJhMi00YzFlLWE1MmEtYzM1M2ZmMGMwMTU4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg",
-            Featured: true,
-            id: 1
-        },
-        {
-            Title: "Interstellar",
-            Description: "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
-            Genre: {
-                Name: "Science Fiction",
-                Description: "Science fiction is a genre of speculative fiction, which typically deals with imaginative and futuristic concepts such as advanced science and technology, space exploration, time travel, parallel universes, and extraterrestrial life."
-            },
-            Director: {
-                Name: "Christopher Nolan",
-                Bio: "Over the course of 15 years of filmmaking, Nolan has gone from low-budget independent films to working on some of the biggest blockbusters ever made",
-                Birth: "1970",
-                Death: null
-            },
-            ImagePath: "https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg",
-            Featured: false,
-            id: 2
-        },
-        {
-            Title: "Inception",
-            Description: "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O., but his tragic past may doom the project and his team to disaster.",
-            Genre: {
-                Name: "Thriller",
-                Description: "Thriller film, also known as suspense film or suspense thriller, is a broad film genre that involves excitement and suspense in the audience."
-            },
-            Director: {
-                Name: "Christopher Nolan",
-                Bio: "Over the course of 15 years of filmmaking, Nolan has gone from low-budget independent films to working on some of the biggest blockbusters ever made",
-                Birth: "1970",
-                Death: null
-            },
-            ImagePath: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlMnFzleYH2PxfTzz084F3cHelZC9FeJ9Ir4vrlrKjZANPCiMJ",
-            Featured: false,
-            id: 3
-        }
-    ]);
+    const [movies, setMovies] = (0, _react.useState)([]);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
-    if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
-        movie: selectedMovie,
-        onBackClick: ()=>setSelectedMovie(null)
-    }, void 0, false, {
-        fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 64,
-        columnNumber: 16
-    }, undefined);
+    (0, _react.useEffect)(()=>{
+        fetch("https://blooming-shore-67354.herokuapp.com/movies").then((res)=>res.json()).then((data)=>{
+            setMovies(data);
+        });
+    });
+    if (selectedMovie) {
+        let similarMovies = movies.filter((movie)=>movie.Title !== selectedMovie.Title && movie.Genre.Name === selectedMovie.Genre.Name);
+        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
+                    movie: selectedMovie,
+                    onBackClick: ()=>setSelectedMovie(null)
+                }, void 0, false, {
+                    fileName: "src/components/main-view/main-view.jsx",
+                    lineNumber: 17,
+                    columnNumber: 17
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                    fileName: "src/components/main-view/main-view.jsx",
+                    lineNumber: 18,
+                    columnNumber: 17
+                }, undefined),
+                similarMovies.map((movie)=>{
+                    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
+                        movie: movie,
+                        handleClick: (newSelectedMovie)=>{
+                            setSelectedMovie(newSelectedMovie);
+                        }
+                    }, movie.id, false, {
+                        fileName: "src/components/main-view/main-view.jsx",
+                        lineNumber: 20,
+                        columnNumber: 26
+                    }, undefined);
+                })
+            ]
+        }, void 0, true, {
+            fileName: "src/components/main-view/main-view.jsx",
+            lineNumber: 16,
+            columnNumber: 15
+        }, undefined);
+    }
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
         children: "There are no movies in the list"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 67,
+        lineNumber: 26,
         columnNumber: 16
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27371,17 +27352,17 @@ const MainView = ()=>{
                 }
             }, movie.id, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 73,
+                lineNumber: 32,
                 columnNumber: 24
             }, undefined);
         })
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 71,
+        lineNumber: 30,
         columnNumber: 9
     }, undefined);
 };
-_s(MainView, "tzmS2FkMbRUm9YsyXlNyVgTN5Ak=");
+_s(MainView, "PO+XgOji7E32nFJj3H5UPLPJ7w4=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
