@@ -27299,6 +27299,7 @@ const MainView = ()=>{
     const [token, setToken] = (0, _react.useState)(null);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     (0, _react.useEffect)(()=>{
+        if (!token) return;
         fetch("https://blooming-shore-67354.herokuapp.com/movies").then((res)=>res.json()).then((data)=>{
             setMovies(data);
         });
@@ -27306,12 +27307,12 @@ const MainView = ()=>{
     if (!user) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {}, void 0, false, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 23,
+            lineNumber: 26,
             columnNumber: 9
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 22,
+        lineNumber: 25,
         columnNumber: 7
     }, undefined);
     if (selectedMovie) {
@@ -27323,19 +27324,19 @@ const MainView = ()=>{
                     onBackClick: ()=>setSelectedMovie(null)
                 }, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 36,
+                    lineNumber: 39,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 40,
+                    lineNumber: 43,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                     children: "Similar Movies"
                 }, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 41,
+                    lineNumber: 44,
                     columnNumber: 9
                 }, undefined),
                 similarMovies.map((movie)=>{
@@ -27346,14 +27347,14 @@ const MainView = ()=>{
                         }
                     }, movie._id, false, {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 44,
+                        lineNumber: 47,
                         columnNumber: 13
                     }, undefined);
                 })
             ]
         }, void 0, true, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 35,
+            lineNumber: 38,
             columnNumber: 7
         }, undefined);
     }
@@ -27361,7 +27362,7 @@ const MainView = ()=>{
         children: "There are no movies in the list"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 58,
+        lineNumber: 61,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27373,13 +27374,13 @@ const MainView = ()=>{
                 }
             }, movie._id, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 65,
+                lineNumber: 68,
                 columnNumber: 11
             }, undefined);
         })
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 62,
+        lineNumber: 65,
         columnNumber: 5
     }, undefined);
 };
@@ -28366,59 +28367,59 @@ const LoginView = ()=>{
             Password: password
         };
         fetch("https://blooming-shore-67354.herokuapp.com/login", {
-            method: POST,
+            method: "POST",
             headers: {
-                "Content-type": "application/json"
+                "Content-Type": "application/json"
             },
             body: JSON.stringify(data)
         }).then((res)=>{
-            res.json();
+            return res.json();
         }).then((data)=>{
-            console.log(`Logged in ${data}`);
+            console.log(data);
+        }).catch((err)=>{
+            console.error(err);
         });
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
-        action: "",
+        action: "POST",
         onSubmit: handleSubmit,
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                 htmlFor: "",
                 children: [
                     "Username:",
-                    " ",
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                         type: "text",
                         value: username,
                         onChange: (e)=>setUsername(e.target.value)
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 31,
+                        lineNumber: 36,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 29,
+                lineNumber: 34,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                 htmlFor: "",
                 children: [
                     "Password:",
-                    " ",
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                         type: "password",
                         value: password,
                         onChange: (e)=>setPassword(e.target.value)
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 39,
+                        lineNumber: 44,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 37,
+                lineNumber: 42,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -28426,13 +28427,13 @@ const LoginView = ()=>{
                 children: "Submit"
             }, void 0, false, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 45,
+                lineNumber: 50,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/login-view/login-view.jsx",
-        lineNumber: 28,
+        lineNumber: 33,
         columnNumber: 5
     }, undefined);
 };

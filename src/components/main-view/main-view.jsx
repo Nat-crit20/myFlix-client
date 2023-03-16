@@ -10,6 +10,9 @@ export const MainView = () => {
 
   const [selectedMovie, setSelectedMovie] = useState(null);
   useEffect(() => {
+    if (!token) {
+      return;
+    }
     fetch("https://blooming-shore-67354.herokuapp.com/movies")
       .then((res) => res.json())
       .then((data) => {

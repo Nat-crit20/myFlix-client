@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export const LoginView = () => {
   const [username, setUsername] = useState("");
@@ -6,31 +6,33 @@ export const LoginView = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const data = {
       Username: username,
       Password: password,
     };
+
     fetch("https://blooming-shore-67354.herokuapp.com/login", {
-      method: POST,
+      method: "POST",
       headers: {
-        "Content-type": "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     })
       .then((res) => {
-        res.json();
+        return res.json();
       })
       .then((data) => {
-        console.log(`Logged in ${data}`);
+        console.log(data);
       })
       .catch((err) => {
         console.error(err);
       });
   };
   return (
-    <form action="" onSubmit={handleSubmit}>
+    <form action="POST" onSubmit={handleSubmit}>
       <label htmlFor="">
-        Username:{" "}
+        Username:
         <input
           type="text"
           value={username}
@@ -38,7 +40,7 @@ export const LoginView = () => {
         />
       </label>
       <label htmlFor="">
-        Password:{" "}
+        Password:
         <input
           type="password"
           value={password}
