@@ -6,7 +6,7 @@ import { SignUpView } from "../signup-view/signup-view";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
-  const storedToken = JSON.parse(localStorage.getItem("token"));
+  const storedToken = localStorage.getItem("token");
   const [movies, setMovies] = useState([]);
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
@@ -31,13 +31,14 @@ export const MainView = () => {
   if (!user) {
     return (
       <div>
+        Login:
         <LoginView
           onLogin={(user, token) => {
             setUser(user);
             setToken(token);
           }}
         />
-        or
+        or Sign Up:
         <SignUpView />
       </div>
     );
