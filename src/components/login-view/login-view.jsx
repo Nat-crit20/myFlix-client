@@ -26,7 +26,6 @@ export const LoginView = ({ onLogin }) => {
         console.log(data);
         if (data.user) {
           onLogin(data.user, data.token);
-          window.location.reload();
         }
       })
       .catch((err) => {
