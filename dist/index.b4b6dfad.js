@@ -27305,7 +27305,12 @@ const MainView = ()=>{
         });
     }, []);
     if (!user) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {}, void 0, false, {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {
+            onLogin: (user, token)=>{
+                setUser(user);
+                setToken(token);
+            }
+        }, void 0, false, {
             fileName: "src/components/main-view/main-view.jsx",
             lineNumber: 26,
             columnNumber: 9
@@ -27324,19 +27329,19 @@ const MainView = ()=>{
                     onBackClick: ()=>setSelectedMovie(null)
                 }, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 39,
+                    lineNumber: 44,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 43,
+                    lineNumber: 48,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                     children: "Similar Movies"
                 }, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 44,
+                    lineNumber: 49,
                     columnNumber: 9
                 }, undefined),
                 similarMovies.map((movie)=>{
@@ -27347,14 +27352,14 @@ const MainView = ()=>{
                         }
                     }, movie._id, false, {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 47,
+                        lineNumber: 52,
                         columnNumber: 13
                     }, undefined);
                 })
             ]
         }, void 0, true, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 38,
+            lineNumber: 43,
             columnNumber: 7
         }, undefined);
     }
@@ -27362,7 +27367,7 @@ const MainView = ()=>{
         children: "There are no movies in the list"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 61,
+        lineNumber: 66,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27374,13 +27379,13 @@ const MainView = ()=>{
                 }
             }, movie._id, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 68,
+                lineNumber: 73,
                 columnNumber: 11
             }, undefined);
         })
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 65,
+        lineNumber: 70,
         columnNumber: 5
     }, undefined);
 };
@@ -28356,7 +28361,7 @@ parcelHelpers.export(exports, "LoginView", ()=>LoginView);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _s = $RefreshSig$();
-const LoginView = ()=>{
+const LoginView = ({ onLogin  })=>{
     _s();
     const [username, setUsername] = (0, _react.useState)("");
     const [password, setPassword] = (0, _react.useState)("");
@@ -28376,6 +28381,10 @@ const LoginView = ()=>{
             return res.json();
         }).then((data)=>{
             console.log(data);
+            if (data.user) {
+                onLogin(data.user, data.token);
+                window.location.reload();
+            }
         }).catch((err)=>{
             console.error(err);
         });
@@ -28394,13 +28403,13 @@ const LoginView = ()=>{
                         onChange: (e)=>setUsername(e.target.value)
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 36,
+                        lineNumber: 40,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 34,
+                lineNumber: 38,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -28413,13 +28422,13 @@ const LoginView = ()=>{
                         onChange: (e)=>setPassword(e.target.value)
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 44,
+                        lineNumber: 48,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 42,
+                lineNumber: 46,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -28427,13 +28436,13 @@ const LoginView = ()=>{
                 children: "Submit"
             }, void 0, false, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 50,
+                lineNumber: 54,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/login-view/login-view.jsx",
-        lineNumber: 33,
+        lineNumber: 37,
         columnNumber: 5
     }, undefined);
 };

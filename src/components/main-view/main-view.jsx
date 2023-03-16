@@ -23,7 +23,12 @@ export const MainView = () => {
   if (!user) {
     return (
       <div>
-        <LoginView />
+        <LoginView
+          onLogin={(user, token) => {
+            setUser(user);
+            setToken(token);
+          }}
+        />
       </div>
     );
   }
