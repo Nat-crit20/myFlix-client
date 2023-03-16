@@ -23,8 +23,9 @@ export const LoginView = ({ onLogin }) => {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
         if (data.user) {
+          localStorage.setItem("user", JSON.stringify(data.user));
+          localStorage.setItem("token", data.token);
           onLogin(data.user, data.token);
         }
       })

@@ -28396,8 +28396,11 @@ const LoginView = ({ onLogin  })=>{
         }).then((res)=>{
             return res.json();
         }).then((data)=>{
-            console.log(data);
-            if (data.user) onLogin(data.user, data.token);
+            if (data.user) {
+                localStorage.setItem("user", JSON.stringify(data.user));
+                localStorage.setItem("token", data.token);
+                onLogin(data.user, data.token);
+            }
         }).catch((err)=>{
             console.error(err);
         });
@@ -28416,13 +28419,13 @@ const LoginView = ({ onLogin  })=>{
                         onChange: (e)=>setUsername(e.target.value)
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 39,
+                        lineNumber: 40,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 37,
+                lineNumber: 38,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -28435,13 +28438,13 @@ const LoginView = ({ onLogin  })=>{
                         onChange: (e)=>setPassword(e.target.value)
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 47,
+                        lineNumber: 48,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 45,
+                lineNumber: 46,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -28449,13 +28452,13 @@ const LoginView = ({ onLogin  })=>{
                 children: "Submit"
             }, void 0, false, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 53,
+                lineNumber: 54,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/login-view/login-view.jsx",
-        lineNumber: 36,
+        lineNumber: 37,
         columnNumber: 5
     }, undefined);
 };
