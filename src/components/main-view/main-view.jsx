@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { LoginView } from "../login-view/login-view";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
+import { SignUpView } from "../signup-view/signup-view";
 
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
@@ -34,6 +35,8 @@ export const MainView = () => {
             setToken(token);
           }}
         />
+        or
+        <SignUpView />
       </div>
     );
   }
