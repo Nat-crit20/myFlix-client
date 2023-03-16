@@ -28,6 +28,10 @@ export const MainView = () => {
       });
   }, [token]);
 
+  const handleMovieClick = (movie) => {
+    setSelectedMovie(movie);
+  };
+
   if (!user) {
     return (
       <div>
@@ -50,25 +54,26 @@ export const MainView = () => {
         movie.Title !== selectedMovie.Title &&
         movie.Genre.Name === selectedMovie.Genre.Name
     );
+    let similarMoviesCards = similarMovies.map((movie) => {
+      return (
+        <MovieCard
+          movie={movie}
+          key={movie._id}
+          handleClick={() => {
+            handleMovieClick(movie);
+          }}
+        />
+      );
+    });
     return (
       <div>
         <MovieView
           movie={selectedMovie}
-          onBackClick={() => setSelectedMovie(null)}
+          onBackClick={() => setSelectedMovie(false)}
         />
         <br />
         <h2>Similar Movies</h2>
-        {similarMovies.map((movie) => {
-          return (
-            <MovieCard
-              movie={movie}
-              key={movie._id}
-              handleClick={(newSelectedMovie) => {
-                setSelectedMovie(newSelectedMovie);
-              }}
-            />
-          );
-        })}
+        {similarMoviesCards}
       </div>
     );
   }
@@ -84,8 +89,8 @@ export const MainView = () => {
           <MovieCard
             movie={movie}
             key={movie._id}
-            handleClick={(newSelectedMovie) => {
-              setSelectedMovie(newSelectedMovie);
+            handleClick={() => {
+              handleMovieClick(movie);
             }}
           />
         );
