@@ -28487,7 +28487,7 @@ const SignUpView = ()=>{
     const [username, setUsername] = (0, _react.useState)("");
     const [password, setPassword] = (0, _react.useState)("");
     const [birthday, setBirthday] = (0, _react.useState)("");
-    const [Email, setEmail] = (0, _react.useState)("");
+    const [email, setEmail] = (0, _react.useState)("");
     const handleSubmit = (e)=>{
         e.preventDefault();
         const data = {
@@ -28512,6 +28512,7 @@ const SignUpView = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
             action: "POST",
+            onSubmit: handleSubmit,
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                     htmlFor: "",
@@ -28522,7 +28523,8 @@ const SignUpView = ()=>{
                             type: "text",
                             value: username,
                             onChange: (e)=>setUsername(e.target.value),
-                            required: true
+                            required: true,
+                            minLength: "3"
                         }, void 0, false, {
                             fileName: "src/components/signup-view/signup-view.jsx",
                             lineNumber: 38,
@@ -28546,13 +28548,13 @@ const SignUpView = ()=>{
                             required: true
                         }, void 0, false, {
                             fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 47,
+                            lineNumber: 48,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/signup-view/signup-view.jsx",
-                    lineNumber: 45,
+                    lineNumber: 46,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -28567,13 +28569,13 @@ const SignUpView = ()=>{
                             required: true
                         }, void 0, false, {
                             fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 56,
+                            lineNumber: 57,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/signup-view/signup-view.jsx",
-                    lineNumber: 54,
+                    lineNumber: 55,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -28588,13 +28590,13 @@ const SignUpView = ()=>{
                             required: true
                         }, void 0, false, {
                             fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 65,
+                            lineNumber: 66,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/signup-view/signup-view.jsx",
-                    lineNumber: 63,
+                    lineNumber: 64,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -28602,7 +28604,7 @@ const SignUpView = ()=>{
                     children: "Submit"
                 }, void 0, false, {
                     fileName: "src/components/signup-view/signup-view.jsx",
-                    lineNumber: 72,
+                    lineNumber: 73,
                     columnNumber: 9
                 }, undefined)
             ]
@@ -28617,7 +28619,7 @@ const SignUpView = ()=>{
         columnNumber: 5
     }, undefined);
 };
-_s(SignUpView, "4aIZYXgsQedP1SZ9J/11Lwv+46o=");
+_s(SignUpView, "cEEbR2sV2w88EjtjFZfxYHHHRx0=");
 _c = SignUpView;
 var _c;
 $RefreshReg$(_c, "SignUpView");

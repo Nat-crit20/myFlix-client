@@ -4,7 +4,7 @@ export const SignUpView = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [birthday, setBirthday] = useState("");
-  const [Email, setEmail] = useState("");
+  const [email, setEmail] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,7 +32,7 @@ export const SignUpView = () => {
 
   return (
     <div>
-      <form action="POST">
+      <form action="POST" onSubmit={handleSubmit}>
         <label htmlFor="">
           Username:{" "}
           <input
@@ -40,6 +40,7 @@ export const SignUpView = () => {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
+            minLength="3"
           />
         </label>
         <label htmlFor="">
