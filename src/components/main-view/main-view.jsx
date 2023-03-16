@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
+import { LoginView } from "../login-view/login-view";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
+  const [user, setUser] = useState("");
+  const [token, setToken] = useState(null);
 
   const [selectedMovie, setSelectedMovie] = useState(null);
   useEffect(() => {
@@ -12,7 +15,16 @@ export const MainView = () => {
       .then((data) => {
         setMovies(data);
       });
-  });
+  }, []);
+
+  if (!user) {
+    return (
+      <div>
+        <LoginView />
+      </div>
+    );
+  }
+
   if (selectedMovie) {
     let similarMovies = movies.filter(
       (movie) =>
@@ -41,6 +53,7 @@ export const MainView = () => {
       </div>
     );
   }
+
   if (movies.length === 0) {
     return <h1>There are no movies in the list</h1>;
   }

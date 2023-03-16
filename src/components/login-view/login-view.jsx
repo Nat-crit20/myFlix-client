@@ -4,7 +4,8 @@ export const LoginView = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const data = {
       Username: username,
       Password: password,
@@ -15,7 +16,16 @@ export const LoginView = () => {
         "Content-type": "application/json",
       },
       body: JSON.stringify(data),
-    });
+    })
+      .then((res) => {
+        res.json();
+      })
+      .then((data) => {
+        console.log(`Logged in ${data}`);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
   return (
     <form action="" onSubmit={handleSubmit}>
