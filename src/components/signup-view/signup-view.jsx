@@ -34,16 +34,40 @@ export const SignUpView = () => {
     <div>
       <form action="POST">
         <label htmlFor="">
-          Username: <input type="text" />
+          Username:{" "}
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
         </label>
         <label htmlFor="">
-          Password: <input type="password" />
+          Password:{" "}
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
         </label>
         <label htmlFor="">
-          Birthday: <input type="date" />
+          Birthday:{" "}
+          <input
+            type="date"
+            value={birthday}
+            onChange={(e) => setBirthday(e.target.value)}
+            required
+          />
         </label>
         <label htmlFor="">
-          Email: <input type="email" />
+          Email:{" "}
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
         </label>
         <button type="submit">Submit</button>
       </form>

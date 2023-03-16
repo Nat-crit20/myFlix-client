@@ -28516,13 +28516,17 @@ const SignUpView = ()=>{
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                     htmlFor: "",
                     children: [
-                        "Username: ",
+                        "Username:",
+                        " ",
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                            type: "text"
+                            type: "text",
+                            value: username,
+                            onChange: (e)=>setUsername(e.target.value),
+                            required: true
                         }, void 0, false, {
                             fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 37,
-                            columnNumber: 21
+                            lineNumber: 38,
+                            columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
@@ -28533,47 +28537,17 @@ const SignUpView = ()=>{
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                     htmlFor: "",
                     children: [
-                        "Password: ",
+                        "Password:",
+                        " ",
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                            type: "password"
+                            type: "password",
+                            value: password,
+                            onChange: (e)=>setPassword(e.target.value),
+                            required: true
                         }, void 0, false, {
                             fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 40,
-                            columnNumber: 21
-                        }, undefined)
-                    ]
-                }, void 0, true, {
-                    fileName: "src/components/signup-view/signup-view.jsx",
-                    lineNumber: 39,
-                    columnNumber: 9
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                    htmlFor: "",
-                    children: [
-                        "Birthday: ",
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                            type: "date"
-                        }, void 0, false, {
-                            fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 43,
-                            columnNumber: 21
-                        }, undefined)
-                    ]
-                }, void 0, true, {
-                    fileName: "src/components/signup-view/signup-view.jsx",
-                    lineNumber: 42,
-                    columnNumber: 9
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                    htmlFor: "",
-                    children: [
-                        "Email: ",
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                            type: "email"
-                        }, void 0, false, {
-                            fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 46,
-                            columnNumber: 18
+                            lineNumber: 47,
+                            columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
@@ -28581,12 +28555,54 @@ const SignUpView = ()=>{
                     lineNumber: 45,
                     columnNumber: 9
                 }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                    htmlFor: "",
+                    children: [
+                        "Birthday:",
+                        " ",
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                            type: "date",
+                            value: birthday,
+                            onChange: (e)=>setBirthday(e.target.value),
+                            required: true
+                        }, void 0, false, {
+                            fileName: "src/components/signup-view/signup-view.jsx",
+                            lineNumber: 56,
+                            columnNumber: 11
+                        }, undefined)
+                    ]
+                }, void 0, true, {
+                    fileName: "src/components/signup-view/signup-view.jsx",
+                    lineNumber: 54,
+                    columnNumber: 9
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                    htmlFor: "",
+                    children: [
+                        "Email:",
+                        " ",
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                            type: "email",
+                            value: email,
+                            onChange: (e)=>setEmail(e.target.value),
+                            required: true
+                        }, void 0, false, {
+                            fileName: "src/components/signup-view/signup-view.jsx",
+                            lineNumber: 65,
+                            columnNumber: 11
+                        }, undefined)
+                    ]
+                }, void 0, true, {
+                    fileName: "src/components/signup-view/signup-view.jsx",
+                    lineNumber: 63,
+                    columnNumber: 9
+                }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                     type: "submit",
                     children: "Submit"
                 }, void 0, false, {
                     fileName: "src/components/signup-view/signup-view.jsx",
-                    lineNumber: 48,
+                    lineNumber: 72,
                     columnNumber: 9
                 }, undefined)
             ]
