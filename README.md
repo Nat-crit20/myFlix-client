@@ -35,6 +35,7 @@ Users should be able to:
 
 - Node.js
 - MongoDB
+- React
 
 ### Continued development
 
