@@ -2,4 +2,21 @@
   color: #4682b4;
 }
 
+img {
+  width: 200px;
+}
+
+.movieTitle {
+  color: #000;
+}
+
+.movieLink {
+  cursor: pointer;
+  color: #00f;
+}
+
+button {
+  cursor: pointer;
+}
+
 /*# sourceMappingURL=index.ce1d6491.css.map */

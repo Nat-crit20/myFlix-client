@@ -1,5 +1,23 @@
 $color: steelblue;
-
+$color-link: blue;
+$color-title: black;
 .my-flix {
   color: $color;
+}
+
+img {
+  width: 200px;
+}
+
+.movieTitle {
+  color: $color-title;
+}
+
+.movieLink {
+  cursor: pointer;
+  color: $color-link;
+}
+
+button {
+  cursor: pointer;
 }
