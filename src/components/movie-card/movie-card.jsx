@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { Button, Card } from "react-bootstrap";
 export const MovieCard = ({ movie, handleClick }) => {
   return (
-    <Card>
+    <Card className="h-100">
       <Card.Img src={movie.ImagePath} />
       <Card.Body>
         <Card.Title>{movie.Title}</Card.Title>
