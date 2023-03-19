@@ -59,13 +59,15 @@ export const MainView = () => {
     );
     let similarMoviesCards = similarMovies.map((movie) => {
       return (
-        <MovieCard
-          movie={movie}
-          key={movie._id}
-          handleClick={() => {
-            handleMovieClick(movie);
-          }}
-        />
+        <Col className="mb-5" key={movie._id} md={3}>
+          <MovieCard
+            movie={movie}
+            key={movie._id}
+            handleClick={() => {
+              handleMovieClick(movie);
+            }}
+          />
+        </Col>
       );
     });
     return (
