@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { Button, Col, Row, Container } from "react-bootstrap";
 export const MovieView = ({ movie, onBackClick }) => {
   return (
-    <Container className="movie-view">
+    <Container className="movie-view md-3">
       <Row>
         <Col>
           <img src={movie.ImagePath} alt="" />
