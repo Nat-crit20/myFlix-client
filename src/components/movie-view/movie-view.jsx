@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { Button, Col, Row, Container } from "react-bootstrap";
 export const MovieView = ({ movie, onBackClick }) => {
   return (
-    <Container>
+    <Container className="movie-view">
       <Row>
         <Col>
           <img src={movie.ImagePath} alt="" />
@@ -28,11 +28,9 @@ export const MovieView = ({ movie, onBackClick }) => {
           <p>{movie.Description}</p>
         </Col>
       </Row>
-      <Row>
-        <Button variant="primary" onClick={onBackClick}>
-          Back
-        </Button>
-      </Row>
+      <Button variant="primary" onClick={onBackClick}>
+        Back
+      </Button>
     </Container>
   );
 };

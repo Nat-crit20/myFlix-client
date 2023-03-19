@@ -3,7 +3,7 @@ import { LoginView } from "../login-view/login-view";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { SignUpView } from "../signup-view/signup-view";
-import { Row, Col, Button } from "react-bootstrap";
+import { Row, Col, Button, Container } from "react-bootstrap";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -35,7 +35,7 @@ export const MainView = () => {
 
   if (!user) {
     return (
-      <Row className="justify-content-md-center">
+      <Row md={6} className="justify-content-md-center">
         <Col md={6}>
           Login:
           <LoginView
