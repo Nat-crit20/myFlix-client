@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
+import { Button, Form } from "react-bootstrap";
 
 export const LoginView = ({ onLogin }) => {
   const [username, setUsername] = useState("");
@@ -35,27 +36,30 @@ export const LoginView = ({ onLogin }) => {
       });
   };
   return (
-    <form action="POST" onSubmit={handleSubmit}>
-      <label htmlFor="">
-        Username:
-        <input
+    <Form action="POST" onSubmit={handleSubmit}>
+      <Form.Group controlId="formUsername">
+        <Form.Label htmlFor="">Username:</Form.Label>
+        <Form.Control
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
         />
-      </label>
-      <label htmlFor="">
-        Password:
-        <input
+      </Form.Group>
+      <Form.Group controlId="formPassword">
+        <Form.Label htmlFor="">Password:</Form.Label>
+        <Form.Control
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-      </label>
-      <button type="submit">Submit</button>
-    </form>
+      </Form.Group>
+
+      <Button variant="primary" type="submit">
+        Submit
+      </Button>
+    </Form>
   );
 };
 
