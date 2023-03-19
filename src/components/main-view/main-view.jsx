@@ -3,7 +3,7 @@ import { LoginView } from "../login-view/login-view";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { SignUpView } from "../signup-view/signup-view";
-import { Row, Col, Button, Container } from "react-bootstrap";
+import { Row, Col, Button, Container, Navbar } from "react-bootstrap";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -88,31 +88,35 @@ export const MainView = () => {
   }
 
   return (
-    <Row className="justify-content-md-center">
-      {movies.map((movie) => {
-        return (
-          <Col className="mb-5" key={movie._id} md={3}>
-            <MovieCard
-              movie={movie}
-              key={movie._id}
-              handleClick={() => {
-                handleMovieClick(movie);
-              }}
-            />
-          </Col>
-        );
-      })}
-      <Col md={3}>
-        <Button
-          onClick={() => {
-            setToken(null);
-            setUser(null);
-            localStorage.clear();
-          }}
-        >
-          Logout
-        </Button>
-      </Col>
-    </Row>
+    <>
+      <Navbar sticky="top" bg="light">
+        <Container>
+          <Button
+            onClick={() => {
+              setToken(null);
+              setUser(null);
+              localStorage.clear();
+            }}
+          >
+            Logout
+          </Button>
+        </Container>
+      </Navbar>
+      <Row className="justify-content-md-center">
+        {movies.map((movie) => {
+          return (
+            <Col className="mb-5" key={movie._id} md={3}>
+              <MovieCard
+                movie={movie}
+                key={movie._id}
+                handleClick={() => {
+                  handleMovieClick(movie);
+                }}
+              />
+            </Col>
+          );
+        })}
+      </Row>
+    </>
   );
 };
