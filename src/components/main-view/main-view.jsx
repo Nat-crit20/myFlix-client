@@ -17,15 +17,26 @@ export const MainView = () => {
     if (!token) {
       return;
     }
+
     fetch("https://blooming-shore-67354.herokuapp.com/movies", {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 401) {
+          throw new Error("Unauthorized");
+        }
+        return res.json();
+      })
       .then((data) => {
         setMovies(data);
+      })
+      .catch((error) => {
+        console.error(error);
+        setUser(null);
+        setToken(null);
       });
   }, [token]);
 
