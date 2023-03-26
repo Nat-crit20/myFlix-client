@@ -42,6 +42,24 @@ export const MainView = () => {
       });
   }, [token]);
 
+  const deregister = () => {
+    fetch(`https://blooming-shore-67354.herokuapp.com/users/${user.Username}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => {
+        alert(`Successfully deregister`);
+        setUser(null);
+        setToken(null);
+        localStorage.clear();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <BrowserRouter>
       <NavigationBar
@@ -133,7 +151,7 @@ export const MainView = () => {
                   <Navigate to={"/login"} replace />
                 ) : (
                   <Col>
-                    <ProfileView />
+                    <ProfileView user={user} deregister={deregister} />
                   </Col>
                 )}
               </>

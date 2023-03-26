@@ -1,7 +1,8 @@
-export const ProfileView = () => {
+export const ProfileView = ({ user, deregister }) => {
   return (
     <>
-      <h1>Hello user</h1>
+      <h1>{user.Username}</h1>
+      <button onClick={deregister}>Deregister</button>
     </>
   );
 };
