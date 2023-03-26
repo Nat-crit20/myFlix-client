@@ -3,6 +3,7 @@ import { LoginView } from "../login-view/login-view";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { SignUpView } from "../signup-view/signup-view";
+import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { Row, Col, Button, Container, Navbar } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
@@ -13,7 +14,6 @@ export const MainView = () => {
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
 
-  const [selectedMovie, setSelectedMovie] = useState(null);
   useEffect(() => {
     if (!token) {
       return;
@@ -41,12 +41,16 @@ export const MainView = () => {
       });
   }, [token]);
 
-  const handleMovieClick = (movie) => {
-    setSelectedMovie(movie);
-  };
-
   return (
     <BrowserRouter>
+      <NavigationBar
+        user={user}
+        onLoggedOut={() => {
+          setUser(null);
+          setToken(null);
+          localStorage.clear();
+        }}
+      />
       <Row className="justify-content-md-center">
         <Routes>
           <Route
@@ -83,7 +87,7 @@ export const MainView = () => {
             }
           />
           <Route
-            path="/movie/:movieId"
+            path="/movie/:title"
             element={
               <>
                 {!user ? (
@@ -103,15 +107,17 @@ export const MainView = () => {
             element={
               <>
                 {!user ? (
-                  <Navigate to="login" replace />
+                  <Navigate to="/login" replace />
                 ) : movies.length === 0 ? (
                   <h1>There are no movies in the list</h1>
                 ) : (
                   <>
                     {movies.map((movie) => {
-                      <Col className="mb-5" key={movie._id} md={3}>
-                        <MovieCard movie={movie} />
-                      </Col>;
+                      return (
+                        <Col className="mb-5" key={movie._id} md={3}>
+                          <MovieCard movie={movie} key={movie._id} />
+                        </Col>
+                      );
                     })}
                   </>
                 )}

@@ -1,10 +1,10 @@
-import PropTypes from "prop-types";
 import { Button, Col, Row, Container } from "react-bootstrap";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 export const MovieView = ({ movies }) => {
   const { movieId } = useParams();
-  const movie = movies.find((m) => m.id === movieId);
+
+  const movie = movies.find((m) => m._id === movieId);
   return (
     <Container className="movie-view md-3">
       <Row>
@@ -37,12 +37,4 @@ export const MovieView = ({ movies }) => {
       </Link>
     </Container>
   );
-};
-
-MovieView.propTypes = {
-  movie: PropTypes.shape({
-    Title: PropTypes.string,
-    ImagePath: PropTypes.string,
-  }).isRequired,
-  onBackClick: PropTypes.func.isRequired,
 };
