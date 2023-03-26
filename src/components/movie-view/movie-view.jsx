@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { Button, Col, Row, Container } from "react-bootstrap";
-export const MovieView = ({ movie, onBackClick }) => {
+import {parm}
+export const MovieView = ({ movie }) => {
   return (
     <Container className="movie-view md-3">
       <Row>
