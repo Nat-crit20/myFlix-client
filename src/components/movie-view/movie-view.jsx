@@ -1,7 +1,10 @@
 import PropTypes from "prop-types";
 import { Button, Col, Row, Container } from "react-bootstrap";
-import {parm}
-export const MovieView = ({ movie }) => {
+import { useParams } from "react-router";
+import { Link } from "react-router-dom";
+export const MovieView = ({ movies }) => {
+  const { movieId } = useParams();
+  const movie = movies.find((m) => m.id === movieId);
   return (
     <Container className="movie-view md-3">
       <Row>
@@ -29,9 +32,9 @@ export const MovieView = ({ movie }) => {
           <p>{movie.Description}</p>
         </Col>
       </Row>
-      <Button variant="primary" onClick={onBackClick}>
-        Back
-      </Button>
+      <Link to={`/`}>
+        <Button variant="primary">Back</Button>
+      </Link>
     </Container>
   );
 };
