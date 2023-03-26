@@ -22,14 +22,22 @@ export const ProfileView = ({ user, deregister, token }) => {
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(data),
-    }).then((res) => {
-      if (res.ok) {
-        alert("Update successful");
+    })
+      .then((res) => {
+        if (res.ok) {
+          alert("Update successful");
+          return res.json();
+        } else {
+          alert("Update failed");
+        }
+      })
+      .then((data) => {
+        localStorage.setItem("user", JSON.stringify(data));
         window.location.reload();
-      } else {
-        alert("Update failed");
-      }
-    });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   return (
     <>
