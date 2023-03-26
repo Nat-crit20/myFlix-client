@@ -57,7 +57,7 @@ export const LoginView = ({ onLogin }) => {
       </Form.Group>
 
       <Button variant="primary" type="submit">
-        Submit
+        Login
       </Button>
     </Form>
   );
