@@ -3,6 +3,7 @@ import { LoginView } from "../login-view/login-view";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { SignUpView } from "../signup-view/signup-view";
+import { Row, Col, Button, Container, Navbar } from "react-bootstrap";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -45,17 +46,19 @@ export const MainView = () => {
 
   if (!user) {
     return (
-      <div>
-        Login:
-        <LoginView
-          onLogin={(user, token) => {
-            setUser(user);
-            setToken(token);
-          }}
-        />
-        or Sign Up:
-        <SignUpView />
-      </div>
+      <Row md={6} className="justify-content-md-center">
+        <Col md={6}>
+          Login:
+          <LoginView
+            onLogin={(user, token) => {
+              setUser(user);
+              setToken(token);
+            }}
+          />
+          or Sign Up:
+          <SignUpView />
+        </Col>
+      </Row>
     );
   }
 
@@ -67,17 +70,19 @@ export const MainView = () => {
     );
     let similarMoviesCards = similarMovies.map((movie) => {
       return (
-        <MovieCard
-          movie={movie}
-          key={movie._id}
-          handleClick={() => {
-            handleMovieClick(movie);
-          }}
-        />
+        <Col className="mb-5" key={movie._id} md={3}>
+          <MovieCard
+            movie={movie}
+            key={movie._id}
+            handleClick={() => {
+              handleMovieClick(movie);
+            }}
+          />
+        </Col>
       );
     });
     return (
-      <div>
+      <Row className="justify-content-md-center">
         <MovieView
           movie={selectedMovie}
           onBackClick={() => setSelectedMovie(false)}
@@ -85,7 +90,7 @@ export const MainView = () => {
         <br />
         <h2>Similar Movies</h2>
         {similarMoviesCards}
-      </div>
+      </Row>
     );
   }
 
@@ -94,27 +99,35 @@ export const MainView = () => {
   }
 
   return (
-    <div>
-      {movies.map((movie) => {
-        return (
-          <MovieCard
-            movie={movie}
-            key={movie._id}
-            handleClick={() => {
-              handleMovieClick(movie);
+    <>
+      <Navbar sticky="top" bg="light">
+        <Container>
+          <Button
+            onClick={() => {
+              setToken(null);
+              setUser(null);
+              localStorage.clear();
             }}
-          />
-        );
-      })}
-      <button
-        onClick={() => {
-          setToken(null);
-          setUser(null);
-          localStorage.clear();
-        }}
-      >
-        Logout
-      </button>
-    </div>
+          >
+            Logout
+          </Button>
+        </Container>
+      </Navbar>
+      <Row className="justify-content-md-center">
+        {movies.map((movie) => {
+          return (
+            <Col className="mb-5" key={movie._id} md={3}>
+              <MovieCard
+                movie={movie}
+                key={movie._id}
+                handleClick={() => {
+                  handleMovieClick(movie);
+                }}
+              />
+            </Col>
+          );
+        })}
+      </Row>
+    </>
   );
 };

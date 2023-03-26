@@ -1,6 +1,8 @@
+@import "~bootstrap/scss/bootstrap.scss";
 $color: steelblue;
 $color-link: blue;
 $color-title: black;
+
 .my-flix {
   color: $color;
 }
@@ -20,4 +22,9 @@ img {
 
 button {
   cursor: pointer;
+}
+
+.movie-view {
+  margin: 3rem;
+  text-align: center;
 }
