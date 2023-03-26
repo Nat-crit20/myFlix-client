@@ -6,6 +6,7 @@ import { SignUpView } from "../signup-view/signup-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { Row, Col, Button, Container, Navbar } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { ProfileView } from "../profile-view/profile-view";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -120,6 +121,20 @@ export const MainView = () => {
                       );
                     })}
                   </>
+                )}
+              </>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <>
+                {!user ? (
+                  <Navigate to={"/login"} replace />
+                ) : (
+                  <Col>
+                    <ProfileView />
+                  </Col>
                 )}
               </>
             }
