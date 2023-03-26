@@ -4,6 +4,7 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { SignUpView } from "../signup-view/signup-view";
 import { Row, Col, Button, Container, Navbar } from "react-bootstrap";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -44,90 +45,167 @@ export const MainView = () => {
     setSelectedMovie(movie);
   };
 
-  if (!user) {
-    return (
-      <Row md={6} className="justify-content-md-center">
-        <Col md={6}>
-          Login:
-          <LoginView
-            onLogin={(user, token) => {
-              setUser(user);
-              setToken(token);
-            }}
-          />
-          or Sign Up:
-          <SignUpView />
-        </Col>
-      </Row>
-    );
-  }
-
-  if (selectedMovie) {
-    let similarMovies = movies.filter(
-      (movie) =>
-        movie.Title !== selectedMovie.Title &&
-        movie.Genre.Name === selectedMovie.Genre.Name
-    );
-    let similarMoviesCards = similarMovies.map((movie) => {
-      return (
-        <Col className="mb-5" key={movie._id} md={3}>
-          <MovieCard
-            movie={movie}
-            key={movie._id}
-            handleClick={() => {
-              handleMovieClick(movie);
-            }}
-          />
-        </Col>
-      );
-    });
-    return (
-      <Row className="justify-content-md-center">
-        <MovieView
-          movie={selectedMovie}
-          onBackClick={() => setSelectedMovie(false)}
-        />
-        <br />
-        <h2>Similar Movies</h2>
-        {similarMoviesCards}
-      </Row>
-    );
-  }
-
-  if (movies.length === 0) {
-    return <h1>There are no movies in the list</h1>;
-  }
-
   return (
-    <>
-      <Navbar sticky="top" bg="light">
-        <Container>
-          <Button
-            onClick={() => {
-              setToken(null);
-              setUser(null);
-              localStorage.clear();
-            }}
-          >
-            Logout
-          </Button>
-        </Container>
-      </Navbar>
+    <BrowserRouter>
       <Row className="justify-content-md-center">
-        {movies.map((movie) => {
-          return (
-            <Col className="mb-5" key={movie._id} md={3}>
-              <MovieCard
-                movie={movie}
-                key={movie._id}
-                handleClick={() => {
-                  handleMovieClick(movie);
-                }}
-              />
-            </Col>
-          );
-        })}
+        <Routes>
+          <Route
+            path="/signup"
+            element={
+              <>
+                {user ? (
+                  <Navigate to="/" />
+                ) : (
+                  <Col md={5}>
+                    <SignUpView />
+                  </Col>
+                )}
+              </>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <>
+                {user ? (
+                  <Navigate to="/" />
+                ) : (
+                  <Col md={5}>
+                    <LoginView
+                      onLogin={(user, token) => {
+                        setUser(user);
+                        setToken(token);
+                      }}
+                    />
+                  </Col>
+                )}
+              </>
+            }
+          />
+          <Route
+            path="/movie/:movieId"
+            element={
+              <>
+                {!user ? (
+                  <Navigate to="/login" replace />
+                ) : movies.length === 0 ? (
+                  <h1>There are no movies in the list</h1>
+                ) : (
+                  <Col md={8}>
+                    <MovieView movies={movies} />
+                  </Col>
+                )}
+              </>
+            }
+          />
+          <Route
+            path="/"
+            element={
+              <>
+                {!user ? (
+                  <Navigate to="login" replace />
+                ) : movies.length === 0 ? (
+                  <h1>There are no movies in the list</h1>
+                ) : (
+                  <>
+                    {movies.map((movie) => {
+                      <Col className="mb-5" key={movie._id} md={3}>
+                        <MovieCard movie={movie} />
+                      </Col>;
+                    })}
+                  </>
+                )}
+              </>
+            }
+          />
+        </Routes>
       </Row>
-    </>
+    </BrowserRouter>
   );
+  // if (!user) {
+  //   return (
+  //     <Row md={6} className="justify-content-md-center">
+  //       <Col md={6}>
+  //         Login:
+  //         <LoginView
+  //           onLogin={(user, token) => {
+  //             setUser(user);
+  //             setToken(token);
+  //           }}
+  //         />
+  //         or Sign Up:
+  //         <SignUpView />
+  //       </Col>
+  //     </Row>
+  //   );
+  // }
+
+  // if (selectedMovie) {
+  //   let similarMovies = movies.filter(
+  //     (movie) =>
+  //       movie.Title !== selectedMovie.Title &&
+  //       movie.Genre.Name === selectedMovie.Genre.Name
+  //   );
+  //   let similarMoviesCards = similarMovies.map((movie) => {
+  //     return (
+  //       <Col className="mb-5" key={movie._id} md={3}>
+  //         <MovieCard
+  //           movie={movie}
+  //           key={movie._id}
+  //           handleClick={() => {
+  //             handleMovieClick(movie);
+  //           }}
+  //         />
+  //       </Col>
+  //     );
+  //   });
+  //   return (
+  //     <Row className="justify-content-md-center">
+  //       <MovieView
+  //         movie={selectedMovie}
+  //         onBackClick={() => setSelectedMovie(false)}
+  //       />
+  //       <br />
+  //       <h2>Similar Movies</h2>
+  //       {similarMoviesCards}
+  //     </Row>
+  //   );
+  // }
+
+  // if (movies.length === 0) {
+  //   return <h1>There are no movies in the list</h1>;
+  // }
+
+  // return (
+  //   <>
+  //     <Navbar sticky="top" bg="light">
+  //       <Container>
+  //         <Button
+  //           onClick={() => {
+  //             setToken(null);
+  //             setUser(null);
+  //             localStorage.clear();
+  //           }}
+  //         >
+  //           Logout
+  //         </Button>
+  //       </Container>
+  //     </Navbar>
+  //     <Row className="justify-content-md-center">
+  //       {movies.map((movie) => {
+  //         return (
+  //           <Col className="mb-5" key={movie._id} md={3}>
+  //             <MovieCard
+  //               movie={movie}
+  //               key={movie._id}
+  //               handleClick={() => {
+  //                 handleMovieClick(movie);
+  //               }}
+  //             />
+  //           </Col>
+  //         );
+  //       })}
+  //     </Row>
+  //   </>
+  // );
 };
