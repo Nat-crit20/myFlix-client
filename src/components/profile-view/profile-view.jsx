@@ -1,11 +1,19 @@
 import { useState } from "react";
 import { Button, Form, Row, Col } from "react-bootstrap";
+import { MovieCard } from "../movie-card/movie-card";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
-export const ProfileView = ({ user, deregister, token }) => {
+export const ProfileView = ({ user, deregister, token, movies }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [birthday, setBirthday] = useState("");
   const [email, setEmail] = useState("");
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const handleUpdate = (e) => {
     e.preventDefault();
@@ -39,11 +47,23 @@ export const ProfileView = ({ user, deregister, token }) => {
         console.log(err);
       });
   };
+  const favoriteMovies = movies.filter((m) =>
+    user.FavoriteMovies.includes(m._id)
+  );
   return (
     <>
       <h1>{user.Username}</h1>
       <button onClick={deregister}>Deregister</button>
       <p>{user.Birthday}</p>
+      <>
+        {favoriteMovies.map((movie) => {
+          return (
+            <Col className="mb-5" key={movie._id} md={3}>
+              <MovieCard movie={movie} key={movie._id} />
+            </Col>
+          );
+        })}
+      </>
       <div>
         <Form action="PUT" onSubmit={handleUpdate}>
           <Row className="mb-3">

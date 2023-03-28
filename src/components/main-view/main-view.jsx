@@ -14,7 +14,6 @@ export const MainView = () => {
   const [movies, setMovies] = useState([]);
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
-
   useEffect(() => {
     if (!token) {
       return;
@@ -155,6 +154,7 @@ export const MainView = () => {
                       user={user}
                       deregister={deregister}
                       token={token}
+                      movies={movies}
                     />
                   </Col>
                 )}
