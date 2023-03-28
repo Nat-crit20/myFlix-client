@@ -46550,20 +46550,14 @@ const MovieCard = ({ movie  })=>{
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _ai.AiOutlineHeart), {
-                        style: {
-                            color: "red",
-                            fontSize: "50px"
-                        }
+                        className: "heart"
                     }, void 0, false, {
                         fileName: "src/components/movie-card/movie-card.jsx",
                         lineNumber: 12,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _ai.AiFillHeart), {
-                        style: {
-                            color: "red",
-                            fontSize: "50px"
-                        }
+                        className: "heart"
                     }, void 0, false, {
                         fileName: "src/components/movie-card/movie-card.jsx",
                         lineNumber: 13,

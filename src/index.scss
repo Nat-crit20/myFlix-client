@@ -20,6 +20,16 @@ img {
   color: $color-link;
 }
 
+.heart {
+  font-size: 50px;
+  color: red;
+  cursor: pointer;
+  transition: 0.2s opacity;
+}
+.heart:hover {
+  opacity: 0.2;
+}
+
 button {
   cursor: pointer;
 }

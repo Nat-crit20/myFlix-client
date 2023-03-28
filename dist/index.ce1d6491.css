@@ -12023,6 +12023,17 @@ img {
   color: #00f;
 }
 
+.heart {
+  color: red;
+  cursor: pointer;
+  font-size: 50px;
+  transition: opacity .2s;
+}
+
+.heart:hover {
+  opacity: .2;
+}
+
 button {
   cursor: pointer;
 }
