@@ -64,54 +64,70 @@ export const ProfileView = ({ user, deregister, token, movies }) => {
           );
         })}
       </>
-      <div>
-        <Form action="PUT" onSubmit={handleUpdate}>
-          <Row className="mb-3">
-            <Form.Group as={Col} controlId="formUsername">
-              <Form.Label htmlFor="">Username: </Form.Label>
-              <Form.Control
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required
-                minLength="3"
-              />
-            </Form.Group>
-            <Form.Group as={Col} controlId="formPassword">
-              <Form.Label htmlFor="">Password: </Form.Label>
-              <Form.Control
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </Form.Group>
-          </Row>
+      <>
+        <Button variant="primary" onClick={handleShow}>
+          Update Profile Info
+        </Button>
 
-          <Form.Group className="mb-3" controlId="formBirthday">
-            <Form.Label htmlFor="">Birthday: </Form.Label>
-            <Form.Control
-              type="date"
-              value={birthday}
-              onChange={(e) => setBirthday(e.target.value)}
-              required
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formEmail">
-            <Form.Label htmlFor="">Email: </Form.Label>
-            <Form.Control
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </Form.Group>
-
-          <Button variant="primary" type="submit">
-            Update
-          </Button>
-        </Form>
-      </div>
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Modal heading</Modal.Title>
+          </Modal.Header>
+          <Form action="PUT" onSubmit={handleUpdate}>
+            <Modal.Body>
+              {" "}
+              <Row className="mb-3">
+                <Form.Group as={Col} controlId="formUsername">
+                  <Form.Label htmlFor="">Username: </Form.Label>
+                  <Form.Control
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    required
+                    minLength="3"
+                  />
+                </Form.Group>
+                <Form.Group as={Col} controlId="formPassword">
+                  <Form.Label htmlFor="">Password: </Form.Label>
+                  <Form.Control
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                  />
+                </Form.Group>
+              </Row>
+              <Form.Group className="mb-3" controlId="formBirthday">
+                <Form.Label htmlFor="">Birthday: </Form.Label>
+                <Form.Control
+                  type="date"
+                  value={birthday}
+                  onChange={(e) => setBirthday(e.target.value)}
+                  required
+                />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formEmail">
+                <Form.Label htmlFor="">Email: </Form.Label>
+                <Form.Control
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </Form.Group>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Close
+              </Button>
+              <Button variant="primary" type="submit" onClick={handleClose}>
+                Save Changes
+              </Button>
+            </Modal.Footer>
+          </Form>
+        </Modal>
+      </>
+      <div></div>
     </>
   );
 };
