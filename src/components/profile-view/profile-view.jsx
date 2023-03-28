@@ -53,7 +53,9 @@ export const ProfileView = ({ user, deregister, token, movies }) => {
   return (
     <>
       <h1>{user.Username}</h1>
-      <button onClick={deregister}>Deregister</button>
+      <Button onClick={deregister} variant="danger">
+        Deregister
+      </Button>
       <p>{user.Birthday}</p>
       <>
         {favoriteMovies.map((movie) => {
@@ -127,7 +129,6 @@ export const ProfileView = ({ user, deregister, token, movies }) => {
           </Form>
         </Modal>
       </>
-      <div></div>
     </>
   );
 };
