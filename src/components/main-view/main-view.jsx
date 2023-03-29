@@ -59,6 +59,29 @@ export const MainView = () => {
       });
   };
 
+  const addToFavorite = (movieId) => {
+    fetch(
+      `https://blooming-shore-67354.herokuapp.com/users/${user._id}/movies/${movieId}`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
+      .then((data) => {
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <BrowserRouter>
       <NavigationBar
