@@ -70,7 +70,9 @@ export const MainView = () => {
       setFavoriteMovies((movie) => movie.filter((m) => m._id !== movieId));
     } else {
       addToFavorite(movieId);
-      setFavoriteMovies((movies) => [...movies, movieId]);
+      setFavoriteMovies((favMovies) => {
+        return [...favMovies, movieId];
+      });
     }
   };
 
@@ -86,8 +88,12 @@ export const MainView = () => {
     )
       .then((res) => {
         if (res.ok) {
-          window.location.reload();
+          return res.json();
         }
+      })
+      .then((res) => {
+        localStorage.setItem("user", JSON.stringify(res));
+        window.location.reload();
       })
       .catch((err) => {
         console.log(err);
@@ -105,8 +111,12 @@ export const MainView = () => {
     )
       .then((res) => {
         if (res.ok) {
-          window.location.reload();
+          return res.json();
         }
+      })
+      .then((res) => {
+        localStorage.setItem("user", JSON.stringify(res));
+        window.location.reload();
       })
       .catch((err) => {
         console.log(err);
