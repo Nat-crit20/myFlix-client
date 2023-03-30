@@ -27305,9 +27305,9 @@ const MainView = ()=>{
     const [movies, setMovies] = (0, _react.useState)([]);
     const [user, setUser] = (0, _react.useState)(storedUser ? storedUser : null);
     const [token, setToken] = (0, _react.useState)(storedToken ? storedToken : null);
-    const [favoriteMovies, setFavoriteMovies] = (0, _react.useState)([
-        ...storedUser.FavoriteMovies
-    ]);
+    const [favoriteMovies, setFavoriteMovies] = (0, _react.useState)(user ? [
+        ...user.FavoriteMovies
+    ] : []);
     (0, _react.useEffect)(()=>{
         if (!token) return;
         fetch("https://blooming-shore-67354.herokuapp.com/movies", {
@@ -27519,7 +27519,7 @@ const MainView = ()=>{
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "pXxTn4ZI0ImJVoa73WH7ZPW+5pg=");
+_s(MainView, "6i4WE+1wBP6+CkpKz7I96Jr7158=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");

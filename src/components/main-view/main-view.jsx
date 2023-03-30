@@ -14,9 +14,9 @@ export const MainView = () => {
   const [movies, setMovies] = useState([]);
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
-  const [favoriteMovies, setFavoriteMovies] = useState([
-    ...storedUser.FavoriteMovies,
-  ]);
+  const [favoriteMovies, setFavoriteMovies] = useState(
+    user ? [...user.FavoriteMovies] : []
+  );
 
   useEffect(() => {
     if (!token) {
