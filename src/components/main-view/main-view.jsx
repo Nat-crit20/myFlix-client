@@ -85,6 +85,31 @@ export const MainView = () => {
         console.log(err);
       });
   };
+  const removeFavorite = (movieId) => {
+    fetch(
+      `https://blooming-shore-67354.herokuapp.com/users/${user._id}/movies/${movieId}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+      .then((res) => {
+        if (res.ok) {
+          setFavoriteMovies((movies) =>
+            movies.filter((m) => m._id !== movieId)
+          );
+          return res.json();
+        }
+      })
+      .then(() => {
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <BrowserRouter>
