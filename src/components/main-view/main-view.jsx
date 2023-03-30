@@ -53,7 +53,7 @@ export const MainView = () => {
       },
     })
       .then((res) => {
-        alert(`Successfully deregister`);
+        alert(`Successfully deregistered`);
         setUser(null);
         setToken(null);
         localStorage.clear();
