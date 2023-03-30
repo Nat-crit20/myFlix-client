@@ -14,7 +14,7 @@ export const MainView = () => {
   const [movies, setMovies] = useState([]);
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
-  const [favoriteMovies, setFavoriteMovies] = useState(
+  const [userFavoriteMovies, setUserFavoriteMovies] = useState(
     user ? [...user.FavoriteMovies] : []
   );
 
@@ -64,13 +64,13 @@ export const MainView = () => {
   };
 
   const toggleFavorite = (movieId) => {
-    const favoriteIndex = favoriteMovies.indexOf(movieId);
+    const favoriteIndex = userFavoriteMovies.indexOf(movieId);
     if (favoriteIndex > -1) {
       removeFavorite(movieId);
-      setFavoriteMovies((movie) => movie.filter((m) => m._id !== movieId));
+      setUserFavoriteMovies((movie) => movie.filter((m) => m._id !== movieId));
     } else {
       addToFavorite(movieId);
-      setFavoriteMovies((favMovies) => {
+      setUserFavoriteMovies((favMovies) => {
         return [...favMovies, movieId];
       });
     }
@@ -93,7 +93,6 @@ export const MainView = () => {
       })
       .then((res) => {
         localStorage.setItem("user", JSON.stringify(res));
-        window.location.reload();
       })
       .catch((err) => {
         console.log(err);
@@ -116,7 +115,6 @@ export const MainView = () => {
       })
       .then((res) => {
         localStorage.setItem("user", JSON.stringify(res));
-        window.location.reload();
       })
       .catch((err) => {
         console.log(err);
@@ -201,6 +199,7 @@ export const MainView = () => {
                             movie={movie}
                             key={movie._id}
                             toggleFavorite={toggleFavorite}
+                            favoriteMovies={userFavoriteMovies}
                           />
                         </Col>
                       );
@@ -223,7 +222,7 @@ export const MainView = () => {
                       deregister={deregister}
                       token={token}
                       movies={movies}
-                      favoriteMovies={favoriteMovies}
+                      favoriteMovies={userFavoriteMovies}
                       toggleFavorite={toggleFavorite}
                     />
                   </Col>
