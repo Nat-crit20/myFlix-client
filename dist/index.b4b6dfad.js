@@ -27335,7 +27335,7 @@ const MainView = ()=>{
                 Authorization: `Bearer ${token}`
             }
         }).then((res)=>{
-            alert(`Successfully deregister`);
+            alert(`Successfully deregistered`);
             setUser(null);
             setToken(null);
             localStorage.clear();
@@ -27347,7 +27347,7 @@ const MainView = ()=>{
         const favoriteIndex = userFavoriteMovies.indexOf(movieId);
         if (favoriteIndex > -1) {
             removeFavorite(movieId);
-            setUserFavoriteMovies((favMovies)=>favMovies.filter((m)=>m._id !== movieId));
+            setUserFavoriteMovies((favMovies)=>favMovies.filter((m)=>m !== movieId));
         } else {
             addToFavorite(movieId);
             setUserFavoriteMovies((favMovies)=>{

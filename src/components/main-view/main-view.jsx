@@ -68,7 +68,7 @@ export const MainView = () => {
     if (favoriteIndex > -1) {
       removeFavorite(movieId);
       setUserFavoriteMovies((favMovies) =>
-        favMovies.filter((m) => m._id !== movieId)
+        favMovies.filter((m) => m !== movieId)
       );
     } else {
       addToFavorite(movieId);
