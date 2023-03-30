@@ -14,9 +14,10 @@ export const MainView = () => {
   const [movies, setMovies] = useState([]);
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
-  const [favoriteMovies, setFavoriteMovies] = useState(
-    storedUser ? storedUser.FavoriteMovies : []
-  );
+  const [favoriteMovies, setFavoriteMovies] = useState([
+    ...storedUser.FavoriteMovies,
+  ]);
+
   useEffect(() => {
     if (!token) {
       return;
@@ -62,6 +63,17 @@ export const MainView = () => {
       });
   };
 
+  const toggleFavorite = (movieId) => {
+    const favoriteIndex = favoriteMovies.indexOf(movieId);
+    if (favoriteIndex > -1) {
+      removeFavorite(movieId);
+      setFavoriteMovies((movie) => movie.filter((m) => m._id !== movieId));
+    } else {
+      addToFavorite(movieId);
+      setFavoriteMovies((movies) => [...movies, movieId]);
+    }
+  };
+
   const addToFavorite = (movieId) => {
     fetch(
       `https://blooming-shore-67354.herokuapp.com/users/${user._id}/movies/${movieId}`,
@@ -74,12 +86,8 @@ export const MainView = () => {
     )
       .then((res) => {
         if (res.ok) {
-          setFavoriteMovies((movies) => [...movies, movieId]);
-          return res.json();
+          window.location.reload();
         }
-      })
-      .then(() => {
-        window.location.reload();
       })
       .catch((err) => {
         console.log(err);
@@ -97,14 +105,8 @@ export const MainView = () => {
     )
       .then((res) => {
         if (res.ok) {
-          setFavoriteMovies((movies) =>
-            movies.filter((m) => m._id !== movieId)
-          );
-          return res.json();
+          window.location.reload();
         }
-      })
-      .then(() => {
-        window.location.reload();
       })
       .catch((err) => {
         console.log(err);
@@ -185,7 +187,11 @@ export const MainView = () => {
                     {movies.map((movie) => {
                       return (
                         <Col className="mb-5" key={movie._id} md={3}>
-                          <MovieCard movie={movie} key={movie._id} />
+                          <MovieCard
+                            movie={movie}
+                            key={movie._id}
+                            toggleFavorite={toggleFavorite}
+                          />
                         </Col>
                       );
                     })}
@@ -208,6 +214,7 @@ export const MainView = () => {
                       token={token}
                       movies={movies}
                       favoriteMovies={favoriteMovies}
+                      toggleFavorite={toggleFavorite}
                     />
                   </Col>
                 )}

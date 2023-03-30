@@ -10,6 +10,7 @@ export const ProfileView = ({
   token,
   movies,
   favoriteMovies,
+  toggleFavorite,
 }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -63,11 +64,16 @@ export const ProfileView = ({
         Deregister
       </Button>
       <p>{user.Birthday}</p>
+      <p>{[...favoriteMovies]}</p>
       <>
         {favoriteMoviesList.map((movie) => {
           return (
             <Col className="mb-5" key={movie._id} md={3}>
-              <MovieCard movie={movie} key={movie._id} />
+              <MovieCard
+                movie={movie}
+                key={movie._id}
+                toggleFavorite={toggleFavorite}
+              />
             </Col>
           );
         })}
