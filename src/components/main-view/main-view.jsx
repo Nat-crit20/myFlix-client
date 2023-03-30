@@ -14,6 +14,9 @@ export const MainView = () => {
   const [movies, setMovies] = useState([]);
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
+  const [favoriteMovies, setFavoriteMovies] = useState(
+    storedUser ? storedUser.FavoriteMovies : []
+  );
   useEffect(() => {
     if (!token) {
       return;
@@ -71,10 +74,11 @@ export const MainView = () => {
     )
       .then((res) => {
         if (res.ok) {
+          setFavoriteMovies((movies) => [...movies, movieId]);
           return res.json();
         }
       })
-      .then((data) => {
+      .then(() => {
         window.location.reload();
       })
       .catch((err) => {
@@ -178,6 +182,7 @@ export const MainView = () => {
                       deregister={deregister}
                       token={token}
                       movies={movies}
+                      favoriteMovies={favoriteMovies}
                     />
                   </Col>
                 )}

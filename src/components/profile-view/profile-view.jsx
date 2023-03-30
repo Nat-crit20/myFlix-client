@@ -4,7 +4,13 @@ import { MovieCard } from "../movie-card/movie-card";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-export const ProfileView = ({ user, deregister, token, movies }) => {
+export const ProfileView = ({
+  user,
+  deregister,
+  token,
+  movies,
+  favoriteMovies,
+}) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [birthday, setBirthday] = useState("");
@@ -47,8 +53,8 @@ export const ProfileView = ({ user, deregister, token, movies }) => {
         console.log(err);
       });
   };
-  const favoriteMovies = movies.filter((m) =>
-    user.FavoriteMovies.includes(m._id)
+  const favoriteMoviesList = movies.filter((m) =>
+    favoriteMovies.includes(m._id)
   );
   return (
     <>
@@ -58,7 +64,7 @@ export const ProfileView = ({ user, deregister, token, movies }) => {
       </Button>
       <p>{user.Birthday}</p>
       <>
-        {favoriteMovies.map((movie) => {
+        {favoriteMoviesList.map((movie) => {
           return (
             <Col className="mb-5" key={movie._id} md={3}>
               <MovieCard movie={movie} key={movie._id} />
