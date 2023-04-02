@@ -31,6 +31,8 @@ Users should be able to:
 
 ## My process
 
+This React single page application is the frontend for the [movie-api backend](https://github.com/Nat-crit20/movie-api) that I created. You can register an account, login, modify your account details, delete your account, see all movies from the database, search for movies, see movie details, add movies to your list of favorites and delete movies from your list of favorites.
+
 ### Built with
 
 - Node.js
