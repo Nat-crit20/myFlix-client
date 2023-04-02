@@ -128,6 +128,14 @@ export const MainView = () => {
     setMoviesView(movies);
   }, [movies]);
 
+  const filter = (input) => {
+    setMoviesView(
+      movies.filter((m) => {
+        return m.Title.toLowerCase().includes(input.toLowerCase());
+      })
+    );
+  };
+
   return (
     <BrowserRouter>
       <NavigationBar
@@ -137,13 +145,7 @@ export const MainView = () => {
           setToken(null);
           localStorage.clear();
         }}
-        onFilter={(input) =>
-          setMoviesView(
-            movies.filter((m) => {
-              m.Title.toLowerCase().includes(input.toLowerCase());
-            })
-          )
-        }
+        onFilter={filter}
       />
       <Row className="justify-content-md-center">
         <Routes>
