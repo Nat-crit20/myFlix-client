@@ -23,11 +23,11 @@ Users should be able to:
 
 ### Screenshot
 
-![]()
+![](./img/Screenshot%202023-04-02%20111644.png)
 
 ### Links
 
-- Live Site URL: []()
+- Live Site URL: [https://myflix-46b5ae.netlify.app](https://myflix-46b5ae.netlify.app)
 
 ## My process
 
@@ -36,6 +36,8 @@ Users should be able to:
 - Node.js
 - MongoDB
 - React
+- SASS
+- React Bootstrap
 
 ### Continued development
 
