@@ -17,6 +17,7 @@ export const MainView = () => {
   const [userFavoriteMovies, setUserFavoriteMovies] = useState(
     user ? [...user.FavoriteMovies] : []
   );
+  const [movieView, setMoviesView] = useState([]);
 
   useEffect(() => {
     if (!token) {
@@ -123,6 +124,10 @@ export const MainView = () => {
       });
   };
 
+  useEffect(() => {
+    setMoviesView(movies);
+  }, [movies]);
+
   return (
     <BrowserRouter>
       <NavigationBar
@@ -132,6 +137,13 @@ export const MainView = () => {
           setToken(null);
           localStorage.clear();
         }}
+        onFilter={(input) =>
+          setMoviesView(
+            movies.filter((m) => {
+              m.Title.toLowerCase().includes(input.toLowerCase());
+            })
+          )
+        }
       />
       <Row className="justify-content-md-center">
         <Routes>
@@ -194,7 +206,7 @@ export const MainView = () => {
                   <h1>There are no movies in the list</h1>
                 ) : (
                   <>
-                    {movies.map((movie) => {
+                    {movieView.map((movie) => {
                       return (
                         <Col className="mb-5" key={movie._id} md={3}>
                           <MovieCard
