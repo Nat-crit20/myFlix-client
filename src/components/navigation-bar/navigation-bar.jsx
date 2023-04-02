@@ -1,9 +1,14 @@
-import { Navbar, Container, Nav, Form } from "react-bootstrap";
+import { Navbar, Container, Nav, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-export const NavigationBar = ({ user, onLoggedOut }) => {
+export const NavigationBar = ({ user, onLoggedOut, onFilter }) => {
+  const [query, setQuery] = useState("");
+  useEffect(() => {
+    onFilter(query);
+  }, [query]);
   return (
-    <Navbar bg="light" expand="lg" sticky="top">
+    <Navbar className="navbar" expand="lg" sticky="top">
       <Container>
         <Navbar.Brand as={Link} to="/">
           myFlix App
@@ -41,6 +46,8 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
                   placeholder="Search"
                   className="me-2"
                   aria-label="Search"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
                 />
               </Form>
             </>

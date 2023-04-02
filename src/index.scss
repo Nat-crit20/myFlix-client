@@ -1,16 +1,41 @@
 @import "~bootstrap/scss/bootstrap.scss";
 $color: steelblue;
 $color-link: blue;
-$color-title: black;
-
+$color-title: #af0000;
+$background-color: #061735;
+// #CC0001, #AF0000, #003A6D, #07264
+$navbar-color: #003a6d;
+$card-background: #07264e;
+$hover: #cc0001;
+body {
+  background-color: $background-color;
+}
 .my-flix {
   color: $color;
 }
-
+.navbar {
+  background-color: $navbar-color;
+  border-radius: 10px;
+  color: white;
+}
+.nav-link {
+  color: white;
+}
+.nav-link:hover {
+  color: $hover;
+}
+.navbar-brand {
+  color: $hover;
+}
+.navbar-brand:hover {
+  color: white;
+}
 img {
   width: 200px;
 }
-
+.card {
+  background-color: $card-background;
+}
 .movieTitle {
   color: $color-title;
 }
@@ -36,5 +61,12 @@ button {
 
 .movie-view {
   margin: 3rem;
+  display: flex;
+}
+.movie-view img {
+  width: 300px;
+}
+
+.profile-view {
   text-align: center;
 }
