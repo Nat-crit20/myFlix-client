@@ -58,12 +58,12 @@ export const ProfileView = ({
     return favoriteMovies.includes(m._id);
   });
   return (
-    <Col md={12}>
+    <Col className="profile-view" md={12}>
       <h1>{user.Username}</h1>
       <Button variant="primary" onClick={handleShow}>
         Update Profile Info
       </Button>
-      <Row>
+      <Row className="justify-content-md-center">
         {favoriteMoviesList.map((movie) => {
           return (
             <Col className="mb-5" key={movie._id} md={3}>
@@ -83,7 +83,7 @@ export const ProfileView = ({
       </Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Update Info</Modal.Title>
         </Modal.Header>
         <Form action="PUT" onSubmit={handleUpdate}>
           <Modal.Body>
