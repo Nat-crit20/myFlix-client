@@ -12006,16 +12006,42 @@ textarea.form-control-lg {
   }
 }
 
+body {
+  background-color: #061735;
+}
+
 .my-flix {
   color: #4682b4;
+}
+
+.navbar {
+  color: #fff;
+  background-color: #003a6d;
+  border-radius: 10px;
+}
+
+.nav-link {
+  color: #fff;
+}
+
+.nav-link:hover, .navbar-brand {
+  color: #cc0001;
+}
+
+.navbar-brand:hover {
+  color: #fff;
 }
 
 img {
   width: 200px;
 }
 
+.card {
+  background-color: #07264e;
+}
+
 .movieTitle {
-  color: #000;
+  color: #af0000;
 }
 
 .movieLink {
@@ -12039,8 +12065,12 @@ button {
 }
 
 .movie-view {
-  text-align: center;
   margin: 3rem;
+  display: flex;
+}
+
+.movie-view img {
+  width: 300px;
 }
 
 /*# sourceMappingURL=index.ce1d6491.css.map */

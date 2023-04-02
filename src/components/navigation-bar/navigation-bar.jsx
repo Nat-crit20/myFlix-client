@@ -8,7 +8,7 @@ export const NavigationBar = ({ user, onLoggedOut, onFilter }) => {
     onFilter(query);
   }, [query]);
   return (
-    <Navbar bg="light" expand="lg" sticky="top">
+    <Navbar className="navbar" expand="lg" sticky="top">
       <Container>
         <Navbar.Brand as={Link} to="/">
           myFlix App
@@ -49,17 +49,6 @@ export const NavigationBar = ({ user, onLoggedOut, onFilter }) => {
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                 />
-                <Link to={"/"}>
-                  <Button
-                    variant="primary"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      onFilter(query);
-                    }}
-                  >
-                    Search
-                  </Button>
-                </Link>
               </Form>
             </>
           )}
