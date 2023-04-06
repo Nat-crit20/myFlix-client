@@ -147,107 +147,109 @@ export const MainView = () => {
         }}
         onFilter={filter}
       />
-      <Row className="justify-content-md-center">
-        <Routes>
-          <Route
-            path="/signup"
-            element={
-              <>
-                {user ? (
-                  <Navigate to="/" />
-                ) : (
-                  <Col md={5}>
-                    <SignUpView />
-                  </Col>
-                )}
-              </>
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <>
-                {user ? (
-                  <Navigate to="/" />
-                ) : (
-                  <Col md={5}>
-                    <LoginView
-                      onLogin={(user, token) => {
-                        setUser(user);
-                        setToken(token);
-                      }}
-                    />
-                  </Col>
-                )}
-              </>
-            }
-          />
-          <Route
-            path="/movies/:movieId"
-            element={
-              <>
-                {!user ? (
-                  <Navigate to="/login" replace />
-                ) : movies.length === 0 ? (
-                  <h1>There are no movies in the list</h1>
-                ) : (
-                  <Col md={8}>
-                    <MovieView movies={movies} />
-                  </Col>
-                )}
-              </>
-            }
-          />
-          <Route
-            path="/"
-            element={
-              <>
-                {!user ? (
-                  <Navigate to="/login" replace />
-                ) : movies.length === 0 ? (
-                  <h1>There are no movies in the list</h1>
-                ) : (
-                  <>
-                    {movieView.map((movie) => {
-                      return (
-                        <Col className="mb-5" key={movie._id} md={3}>
-                          <MovieCard
-                            movie={movie}
-                            key={movie._id}
-                            toggleFavorite={toggleFavorite}
-                            favoriteMovies={userFavoriteMovies}
-                          />
-                        </Col>
-                      );
-                    })}
-                  </>
-                )}
-              </>
-            }
-          />
-          <Route
-            path="/profile"
-            element={
-              <>
-                {!user ? (
-                  <Navigate to={"/login"} replace />
-                ) : (
-                  <Col>
-                    <ProfileView
-                      user={user}
-                      deregister={deregister}
-                      token={token}
-                      movies={movies}
-                      favoriteMovies={userFavoriteMovies}
-                      toggleFavorite={toggleFavorite}
-                    />
-                  </Col>
-                )}
-              </>
-            }
-          />
-        </Routes>
-      </Row>
+      <Container className="my-flix">
+        <Row className="justify-content-md-center">
+          <Routes>
+            <Route
+              path="/signup"
+              element={
+                <>
+                  {user ? (
+                    <Navigate to="/" />
+                  ) : (
+                    <Col md={5}>
+                      <SignUpView />
+                    </Col>
+                  )}
+                </>
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <>
+                  {user ? (
+                    <Navigate to="/" />
+                  ) : (
+                    <Col md={5}>
+                      <LoginView
+                        onLogin={(user, token) => {
+                          setUser(user);
+                          setToken(token);
+                        }}
+                      />
+                    </Col>
+                  )}
+                </>
+              }
+            />
+            <Route
+              path="/movies/:movieId"
+              element={
+                <>
+                  {!user ? (
+                    <Navigate to="/login" replace />
+                  ) : movies.length === 0 ? (
+                    <h1>There are no movies in the list</h1>
+                  ) : (
+                    <Col md={8}>
+                      <MovieView movies={movies} />
+                    </Col>
+                  )}
+                </>
+              }
+            />
+            <Route
+              path="/"
+              element={
+                <>
+                  {!user ? (
+                    <Navigate to="/login" replace />
+                  ) : movies.length === 0 ? (
+                    <h1>There are no movies in the list</h1>
+                  ) : (
+                    <>
+                      {movieView.map((movie) => {
+                        return (
+                          <Col className="mb-5" key={movie._id} md={3}>
+                            <MovieCard
+                              movie={movie}
+                              key={movie._id}
+                              toggleFavorite={toggleFavorite}
+                              favoriteMovies={userFavoriteMovies}
+                            />
+                          </Col>
+                        );
+                      })}
+                    </>
+                  )}
+                </>
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <>
+                  {!user ? (
+                    <Navigate to={"/login"} replace />
+                  ) : (
+                    <Col>
+                      <ProfileView
+                        user={user}
+                        deregister={deregister}
+                        token={token}
+                        movies={movies}
+                        favoriteMovies={userFavoriteMovies}
+                        toggleFavorite={toggleFavorite}
+                      />
+                    </Col>
+                  )}
+                </>
+              }
+            />
+          </Routes>
+        </Row>
+      </Container>
     </BrowserRouter>
   );
 };

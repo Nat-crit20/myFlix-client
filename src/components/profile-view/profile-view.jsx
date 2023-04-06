@@ -59,10 +59,15 @@ export const ProfileView = ({
   });
   return (
     <Col className="profile-view" md={12}>
-      <h1>{user.Username}</h1>
-      <Button variant="primary" onClick={handleShow}>
-        Update Profile Info
-      </Button>
+      <Container>
+        <h1>{user.Username}</h1>
+        <p>{user.Email}</p>
+        <Button variant="primary" onClick={handleShow}>
+          Update Profile Info
+        </Button>
+      </Container>
+
+      <h2>Favorite Movies</h2>
       <Row className="justify-content-md-center">
         {favoriteMoviesList.map((movie) => {
           return (
@@ -132,7 +137,7 @@ export const ProfileView = ({
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button variant="primary" type="submit" onClick={handleClose}>
+            <Button variant="primary" type="submit">
               Save Changes
             </Button>
           </Modal.Footer>
