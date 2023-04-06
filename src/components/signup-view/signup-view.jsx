@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button, Form, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router";
+import { APP_API } from "../../constants";
 
 export const SignUpView = () => {
   const [username, setUsername] = useState("");
@@ -17,7 +18,7 @@ export const SignUpView = () => {
       Birthday: birthday,
       Email: email,
     };
-    fetch("https://blooming-shore-67354.herokuapp.com/users", {
+    fetch(`${APP_API}/users`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

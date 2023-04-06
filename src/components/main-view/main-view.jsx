@@ -7,6 +7,7 @@ import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { Row, Col, Container } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ProfileView } from "../profile-view/profile-view";
+import { APP_API } from "../../constants";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -24,7 +25,7 @@ export const MainView = () => {
       return;
     }
 
-    fetch("https://blooming-shore-67354.herokuapp.com/movies", {
+    fetch(`${APP_API}/movies`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -51,7 +52,7 @@ export const MainView = () => {
   }, [movies]);
 
   const deregister = () => {
-    fetch(`https://blooming-shore-67354.herokuapp.com/users/${user.Username}`, {
+    fetch(`${APP_API}/users/${user.Username}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -78,15 +79,12 @@ export const MainView = () => {
   };
 
   const addToFavorite = (movieId) => {
-    fetch(
-      `https://blooming-shore-67354.herokuapp.com/users/${user._id}/movies/${movieId}`,
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    )
+    fetch(`${APP_API}/users/${user._id}/movies/${movieId}`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
       .then((res) => {
         if (res.ok) {
           return res.json();
@@ -101,15 +99,12 @@ export const MainView = () => {
       });
   };
   const removeFavorite = (movieId) => {
-    fetch(
-      `https://blooming-shore-67354.herokuapp.com/users/${user._id}/movies/${movieId}`,
-      {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    )
+    fetch(`${APP_API}/users/${user._id}/movies/${movieId}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
       .then((res) => {
         if (res.ok) {
           return res.json();

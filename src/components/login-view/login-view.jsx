@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import { Button, Form } from "react-bootstrap";
+import { APP_API } from "../../constants";
 
 export const LoginView = ({ onLogin }) => {
   const [username, setUsername] = useState("");
@@ -14,7 +15,7 @@ export const LoginView = ({ onLogin }) => {
       Password: password,
     };
 
-    fetch("https://blooming-shore-67354.herokuapp.com/login", {
+    fetch(`${APP_API}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
