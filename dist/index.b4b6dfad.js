@@ -27295,8 +27295,8 @@ const MainView = ()=>{
     const storedUser = JSON.parse(localStorage.getItem("user"));
     const storedToken = localStorage.getItem("token");
     const [movies, setMovies] = (0, _react.useState)([]);
-    const [user, setUser] = (0, _react.useState)(storedUser ? storedUser : null);
-    const [token, setToken] = (0, _react.useState)(storedToken ? storedToken : null);
+    const [user, setUser] = (0, _react.useState)(storedUser || null);
+    const [token, setToken] = (0, _react.useState)(storedToken || null);
     const [userFavoriteMovies, setUserFavoriteMovies] = (0, _react.useState)(user ? [
         ...user.FavoriteMovies
     ] : []);
@@ -27321,6 +27321,11 @@ const MainView = ()=>{
     }, [
         token
     ]);
+    (0, _react.useEffect)(()=>{
+        setMoviesView(movies);
+    }, [
+        movies
+    ]);
     const deregister = ()=>{
         fetch(`https://blooming-shore-67354.herokuapp.com/users/${user.Username}`, {
             method: "DELETE",
@@ -27338,18 +27343,8 @@ const MainView = ()=>{
     };
     const toggleFavorite = (movieId)=>{
         const favoriteIndex = userFavoriteMovies.indexOf(movieId);
-        if (favoriteIndex > -1) {
-            removeFavorite(movieId);
-            setUserFavoriteMovies((favMovies)=>favMovies.filter((m)=>m !== movieId));
-        } else {
-            addToFavorite(movieId);
-            setUserFavoriteMovies((favMovies)=>{
-                return [
-                    ...favMovies,
-                    movieId
-                ];
-            });
-        }
+        if (favoriteIndex > -1) removeFavorite(movieId);
+        else addToFavorite(movieId);
     };
     const addToFavorite = (movieId)=>{
         fetch(`https://blooming-shore-67354.herokuapp.com/users/${user._id}/movies/${movieId}`, {
@@ -27361,6 +27356,7 @@ const MainView = ()=>{
             if (res.ok) return res.json();
         }).then((res)=>{
             localStorage.setItem("user", JSON.stringify(res));
+            setUserFavoriteMovies(res.FavoriteMovies);
         }).catch((err)=>{
             console.log(err);
         });
@@ -27375,15 +27371,11 @@ const MainView = ()=>{
             if (res.ok) return res.json();
         }).then((res)=>{
             localStorage.setItem("user", JSON.stringify(res));
+            setUserFavoriteMovies(res.FavoriteMovies);
         }).catch((err)=>{
             console.log(err);
         });
     };
-    (0, _react.useEffect)(()=>{
-        setMoviesView(movies);
-    }, [
-        movies
-    ]);
     const filter = (input)=>{
         setMoviesView(movies.filter((m)=>{
             return m.Title.toLowerCase().includes(input.toLowerCase());
@@ -27401,7 +27393,7 @@ const MainView = ()=>{
                 onFilter: filter
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 141,
+                lineNumber: 137,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
@@ -27422,7 +27414,7 @@ const MainView = ()=>{
                                 }, void 0, false)
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 153,
+                                lineNumber: 149,
                                 columnNumber: 13
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27442,7 +27434,7 @@ const MainView = ()=>{
                                 }, void 0, false)
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 167,
+                                lineNumber: 163,
                                 columnNumber: 13
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27462,7 +27454,7 @@ const MainView = ()=>{
                                 }, void 0, false)
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 186,
+                                lineNumber: 182,
                                 columnNumber: 13
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27489,7 +27481,7 @@ const MainView = ()=>{
                                 }, void 0, false)
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 202,
+                                lineNumber: 198,
                                 columnNumber: 13
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27511,33 +27503,33 @@ const MainView = ()=>{
                                 }, void 0, false)
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 229,
+                                lineNumber: 225,
                                 columnNumber: 13
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 152,
+                        lineNumber: 148,
                         columnNumber: 11
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 151,
+                    lineNumber: 147,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 150,
+                lineNumber: 146,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 140,
+        lineNumber: 136,
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "Su1Dwk2uu7v336W1N+L8dwpA1Pg=");
+_s(MainView, "HyuefJZujFnAhShgyJKfY+/UuvQ=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");

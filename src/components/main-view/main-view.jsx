@@ -12,8 +12,8 @@ export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
   const [movies, setMovies] = useState([]);
-  const [user, setUser] = useState(storedUser ? storedUser : null);
-  const [token, setToken] = useState(storedToken ? storedToken : null);
+  const [user, setUser] = useState(storedUser || null);
+  const [token, setToken] = useState(storedToken || null);
   const [userFavoriteMovies, setUserFavoriteMovies] = useState(
     user ? [...user.FavoriteMovies] : []
   );
@@ -46,6 +46,10 @@ export const MainView = () => {
       });
   }, [token]);
 
+  useEffect(() => {
+    setMoviesView(movies);
+  }, [movies]);
+
   const deregister = () => {
     fetch(`https://blooming-shore-67354.herokuapp.com/users/${user.Username}`, {
       method: "DELETE",
@@ -68,14 +72,8 @@ export const MainView = () => {
     const favoriteIndex = userFavoriteMovies.indexOf(movieId);
     if (favoriteIndex > -1) {
       removeFavorite(movieId);
-      setUserFavoriteMovies((favMovies) =>
-        favMovies.filter((m) => m !== movieId)
-      );
     } else {
       addToFavorite(movieId);
-      setUserFavoriteMovies((favMovies) => {
-        return [...favMovies, movieId];
-      });
     }
   };
 
@@ -96,6 +94,7 @@ export const MainView = () => {
       })
       .then((res) => {
         localStorage.setItem("user", JSON.stringify(res));
+        setUserFavoriteMovies(res.FavoriteMovies);
       })
       .catch((err) => {
         console.log(err);
@@ -118,15 +117,12 @@ export const MainView = () => {
       })
       .then((res) => {
         localStorage.setItem("user", JSON.stringify(res));
+        setUserFavoriteMovies(res.FavoriteMovies);
       })
       .catch((err) => {
         console.log(err);
       });
   };
-
-  useEffect(() => {
-    setMoviesView(movies);
-  }, [movies]);
 
   const filter = (input) => {
     setMoviesView(
