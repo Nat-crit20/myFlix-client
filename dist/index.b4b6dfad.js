@@ -63061,6 +63061,7 @@ parcelHelpers.export(exports, "SignUpView", ()=>SignUpView);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactBootstrap = require("react-bootstrap");
+var _reactRouter = require("react-router");
 var _s = $RefreshSig$();
 const SignUpView = ()=>{
     _s();
@@ -63068,6 +63069,7 @@ const SignUpView = ()=>{
     const [password, setPassword] = (0, _react.useState)("");
     const [birthday, setBirthday] = (0, _react.useState)("");
     const [email, setEmail] = (0, _react.useState)("");
+    const navigate = (0, _reactRouter.useNavigate)();
     const handleSubmit = (e)=>{
         e.preventDefault();
         const data = {
@@ -63085,7 +63087,7 @@ const SignUpView = ()=>{
         }).then((res)=>{
             if (res.ok) {
                 alert("Sign up successful");
-                window.location.reload();
+                return navigate(`/login`);
             } else alert("Sign up failed");
         });
     };
@@ -63106,7 +63108,7 @@ const SignUpView = ()=>{
                                     children: "Username: "
                                 }, void 0, false, {
                                     fileName: "src/components/signup-view/signup-view.jsx",
-                                    lineNumber: 39,
+                                    lineNumber: 41,
                                     columnNumber: 13
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
@@ -63117,13 +63119,13 @@ const SignUpView = ()=>{
                                     minLength: "3"
                                 }, void 0, false, {
                                     fileName: "src/components/signup-view/signup-view.jsx",
-                                    lineNumber: 40,
+                                    lineNumber: 42,
                                     columnNumber: 13
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 38,
+                            lineNumber: 40,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
@@ -63135,7 +63137,7 @@ const SignUpView = ()=>{
                                     children: "Password: "
                                 }, void 0, false, {
                                     fileName: "src/components/signup-view/signup-view.jsx",
-                                    lineNumber: 49,
+                                    lineNumber: 51,
                                     columnNumber: 13
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
@@ -63145,19 +63147,19 @@ const SignUpView = ()=>{
                                     required: true
                                 }, void 0, false, {
                                     fileName: "src/components/signup-view/signup-view.jsx",
-                                    lineNumber: 50,
+                                    lineNumber: 52,
                                     columnNumber: 13
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 48,
+                            lineNumber: 50,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/signup-view/signup-view.jsx",
-                    lineNumber: 37,
+                    lineNumber: 39,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
@@ -63169,7 +63171,7 @@ const SignUpView = ()=>{
                             children: "Birthday: "
                         }, void 0, false, {
                             fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 60,
+                            lineNumber: 62,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
@@ -63179,13 +63181,13 @@ const SignUpView = ()=>{
                             required: true
                         }, void 0, false, {
                             fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 61,
+                            lineNumber: 63,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/signup-view/signup-view.jsx",
-                    lineNumber: 59,
+                    lineNumber: 61,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
@@ -63197,7 +63199,7 @@ const SignUpView = ()=>{
                             children: "Email: "
                         }, void 0, false, {
                             fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 69,
+                            lineNumber: 71,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
@@ -63207,13 +63209,13 @@ const SignUpView = ()=>{
                             required: true
                         }, void 0, false, {
                             fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 70,
+                            lineNumber: 72,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/signup-view/signup-view.jsx",
-                    lineNumber: 68,
+                    lineNumber: 70,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
@@ -63222,22 +63224,26 @@ const SignUpView = ()=>{
                     children: "Submit"
                 }, void 0, false, {
                     fileName: "src/components/signup-view/signup-view.jsx",
-                    lineNumber: 78,
+                    lineNumber: 80,
                     columnNumber: 9
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/signup-view/signup-view.jsx",
-            lineNumber: 36,
+            lineNumber: 38,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/signup-view/signup-view.jsx",
-        lineNumber: 35,
+        lineNumber: 37,
         columnNumber: 5
     }, undefined);
 };
-_s(SignUpView, "cEEbR2sV2w88EjtjFZfxYHHHRx0=");
+_s(SignUpView, "V5zmZqg+bvRTaxTHhy+SUpVDfNk=", false, function() {
+    return [
+        (0, _reactRouter.useNavigate)
+    ];
+});
 _c = SignUpView;
 var _c;
 $RefreshReg$(_c, "SignUpView");
@@ -63247,7 +63253,7 @@ $RefreshReg$(_c, "SignUpView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"530Zh","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4WJ66","react-bootstrap":"3AD9A"}],"bsPVM":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"530Zh","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4WJ66","react-bootstrap":"3AD9A","react-router":"dbWyW"}],"bsPVM":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$abf5 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;

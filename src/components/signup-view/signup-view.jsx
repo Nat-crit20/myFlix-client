@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Button, Form, Row, Col } from "react-bootstrap";
+import { useNavigate } from "react-router";
 
 export const SignUpView = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [birthday, setBirthday] = useState("");
   const [email, setEmail] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,7 +26,7 @@ export const SignUpView = () => {
     }).then((res) => {
       if (res.ok) {
         alert("Sign up successful");
-        window.location.reload();
+        return navigate(`/login`);
       } else {
         alert("Sign up failed");
       }
