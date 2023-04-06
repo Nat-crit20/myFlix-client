@@ -29,6 +29,8 @@ export const LoginView = ({ onLogin }) => {
           localStorage.setItem("user", JSON.stringify(data.user));
           localStorage.setItem("token", data.token);
           onLogin(data.user, data.token);
+        } else {
+          alert("Username or Password is wrong");
         }
       })
       .catch((err) => {
