@@ -3,6 +3,10 @@ import { Button, Form, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router";
 import { APP_API } from "../../constants";
 
+/**
+ * Sign up View
+ * @component
+ */
 export const SignUpView = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");

@@ -2,6 +2,11 @@ import PropTypes from "prop-types";
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+
+/**
+ * Movie Card
+ * @component
+ */
 export const MovieCard = ({ movie, toggleFavorite, favoriteMovies }) => {
   const isFavorite = favoriteMovies.includes(movie._id);
   return (

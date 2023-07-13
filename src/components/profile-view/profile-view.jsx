@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { Button, Form, Row, Col, Container } from "react-bootstrap";
 import { MovieCard } from "../movie-card/movie-card";
-import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
+/**
+ * Profile View
+ * @component
+ */
 export const ProfileView = ({
   user,
   deregister,
@@ -19,12 +22,12 @@ export const ProfileView = ({
 
   const [show, setShow] = useState(false);
 
-/**
- * methods are for showing the modal
- */
+  /**
+   * methods are for showing the modal
+   */
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  
+
   /**
    * Makes an API request to update a users info
    * Then updates the user info in the local storage

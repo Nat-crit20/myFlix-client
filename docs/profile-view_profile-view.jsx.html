@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: profile-view/profile-view.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: profile-view/profile-view.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { useState } from "react";
+import { Button, Form, Row, Col, Container } from "react-bootstrap";
+import { MovieCard } from "../movie-card/movie-card";
+import Modal from "react-bootstrap/Modal";
+
+/**
+ * Profile View
+ * @component
+ */
+export const ProfileView = ({
+  user,
+  deregister,
+  token,
+  movies,
+  favoriteMovies,
+  toggleFavorite,
+}) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [birthday, setBirthday] = useState("");
+  const [email, setEmail] = useState("");
+
+  const [show, setShow] = useState(false);
+
+  /**
+   * methods are for showing the modal
+   */
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  /**
+   * Makes an API request to update a users info
+   * Then updates the user info in the local storage
+   * @param {*} e
+   */
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    const data = {
+      Username: username,
+      Password: password,
+      Birthday: birthday,
+      Email: email,
+    };
+    fetch(`https://blooming-shore-67354.herokuapp.com/users/${user._id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => {
+        if (res.ok) {
+          alert("Update successful");
+          return res.json();
+        } else {
+          alert("Update failed");
+        }
+      })
+      .then((data) => {
+        localStorage.setItem("user", JSON.stringify(data));
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  /**
+   * filters the movies to get the favorites
+   */
+  const favoriteMoviesList = movies.filter((m) => {
+    return favoriteMovies.includes(m._id);
+  });
+  return (
+    &lt;Col className="profile-view" md={12}>
+      &lt;Container>
+        &lt;h1>{user.Username}&lt;/h1>
+        &lt;p>{user.Email}&lt;/p>
+        &lt;Button variant="primary" onClick={handleShow}>
+          Update Profile Info
+        &lt;/Button>
+      &lt;/Container>
+
+      &lt;h2>Favorite Movies&lt;/h2>
+      &lt;Row className="justify-content-md-center">
+        {favoriteMoviesList.map((movie) => {
+          return (
+            &lt;Col className="mb-5" key={movie._id} md={3}>
+              &lt;MovieCard
+                movie={movie}
+                key={movie._id}
+                toggleFavorite={toggleFavorite}
+                favoriteMovies={favoriteMovies}
+              />
+            &lt;/Col>
+          );
+        })}
+      &lt;/Row>
+
+      &lt;Button onClick={deregister} variant="danger">
+        Deregister
+      &lt;/Button>
+      &lt;Modal show={show} onHide={handleClose}>
+        &lt;Modal.Header closeButton>
+          &lt;Modal.Title>Update Info&lt;/Modal.Title>
+        &lt;/Modal.Header>
+        &lt;Form action="PUT" onSubmit={handleUpdate}>
+          &lt;Modal.Body>
+            {" "}
+            &lt;Row className="mb-3">
+              &lt;Form.Group as={Col} controlId="formUsername">
+                &lt;Form.Label htmlFor="">Username: &lt;/Form.Label>
+                &lt;Form.Control
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  required
+                  minLength="3"
+                />
+              &lt;/Form.Group>
+              &lt;Form.Group as={Col} controlId="formPassword">
+                &lt;Form.Label htmlFor="">Password: &lt;/Form.Label>
+                &lt;Form.Control
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              &lt;/Form.Group>
+            &lt;/Row>
+            &lt;Form.Group className="mb-3" controlId="formBirthday">
+              &lt;Form.Label htmlFor="">Birthday: &lt;/Form.Label>
+              &lt;Form.Control
+                type="date"
+                value={birthday}
+                onChange={(e) => setBirthday(e.target.value)}
+                required
+              />
+            &lt;/Form.Group>
+            &lt;Form.Group className="mb-3" controlId="formEmail">
+              &lt;Form.Label htmlFor="">Email: &lt;/Form.Label>
+              &lt;Form.Control
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            &lt;/Form.Group>
+          &lt;/Modal.Body>
+          &lt;Modal.Footer>
+            &lt;Button variant="secondary" onClick={handleClose}>
+              Close
+            &lt;/Button>
+            &lt;Button variant="primary" type="submit">
+              Save Changes
+            &lt;/Button>
+          &lt;/Modal.Footer>
+        &lt;/Form>
+      &lt;/Modal>
+    &lt;/Col>
+  );
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#MainView">MainView</a></li><li><a href="global.html#MovieCard">MovieCard</a></li><li><a href="global.html#MovieView">MovieView</a></li><li><a href="global.html#NavigationBar">NavigationBar</a></li><li><a href="global.html#ProfileView">ProfileView</a></li><li><a href="global.html#SignUpView">SignUpView</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Jul 13 2023 12:35:41 GMT-0500 (Central Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

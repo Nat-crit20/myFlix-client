@@ -2,6 +2,10 @@ import { Navbar, Container, Nav, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
+/**
+ * Navigation Bar
+ * @component
+ */
 export const NavigationBar = ({ user, onLoggedOut, onFilter }) => {
   const [query, setQuery] = useState("");
   useEffect(() => {

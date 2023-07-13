@@ -1,6 +1,11 @@
 import { Button, Col, Row, Container } from "react-bootstrap";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+
+/**
+ * Movie View
+ * @component
+ */
 export const MovieView = ({ movies }) => {
   const { movieId } = useParams();
 

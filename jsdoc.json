@@ -1,0 +1,15 @@
+{
+  "source": {
+    "include": ["src"],
+    "exclude": ["node_modules"]
+  },
+  "plugins": ["plugins/markdown"],
+  "opts": {
+    "recurse": true,
+    "destination": "./docs"
+  },
+  "templates": {
+    "clever:inks": false,
+    "monospaceLinks": false
+  }
+}
