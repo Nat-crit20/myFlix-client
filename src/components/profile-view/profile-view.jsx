@@ -19,9 +19,17 @@ export const ProfileView = ({
 
   const [show, setShow] = useState(false);
 
+/**
+ * methods are for showing the modal
+ */
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  
+  /**
+   * Makes an API request to update a users info
+   * Then updates the user info in the local storage
+   * @param {*} e
+   */
   const handleUpdate = (e) => {
     e.preventDefault();
     const data = {
@@ -54,6 +62,9 @@ export const ProfileView = ({
         console.log(err);
       });
   };
+  /**
+   * filters the movies to get the favorites
+   */
   const favoriteMoviesList = movies.filter((m) => {
     return favoriteMovies.includes(m._id);
   });

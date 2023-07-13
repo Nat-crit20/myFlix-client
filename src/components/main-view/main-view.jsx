@@ -20,6 +20,11 @@ export const MainView = () => {
   );
   const [movieView, setMoviesView] = useState([]);
 
+  /**
+   * Checks if there is a token in the local storage
+   * Makes an API request to get all of the movies
+   * Then populates the movies state
+   */
   useEffect(() => {
     if (!token) {
       return;
@@ -47,10 +52,18 @@ export const MainView = () => {
       });
   }, [token]);
 
+  /**
+   * when the movie list changes what is being shown also changes
+   */
   useEffect(() => {
     setMoviesView(movies);
   }, [movies]);
 
+  /**
+   * Makes an API delete request to remove a user
+   * Clears the user and token states
+   * Clears the local storage
+   */
   const deregister = () => {
     fetch(`${APP_API}/users/${user.Username}`, {
       method: "DELETE",
@@ -69,6 +82,10 @@ export const MainView = () => {
       });
   };
 
+  /**
+   * Toggles the movie to be in the list of favorites or remove from list
+   * @param {*} movieId the id of the movie
+   */
   const toggleFavorite = (movieId) => {
     const favoriteIndex = userFavoriteMovies.indexOf(movieId);
     if (favoriteIndex > -1) {
@@ -78,6 +95,13 @@ export const MainView = () => {
     }
   };
 
+  /**
+   * Adds a movie to the list of favorites
+   * Makes an API post request to add a users favorites
+   * Update the local storage for the user
+   * Update the state for favorite movie
+   * @param {*} movieId the id of the movie
+   */
   const addToFavorite = (movieId) => {
     fetch(`${APP_API}/users/${user._id}/movies/${movieId}`, {
       method: "POST",
@@ -98,6 +122,14 @@ export const MainView = () => {
         console.log(err);
       });
   };
+
+  /**
+   * Removes a movie to the list of favorites
+   * Makes an API delete request to remove a users favorites
+   * Update the local storage for the user
+   * Update the state for favorite movie
+   * @param {*} movieId the id of the movie
+   */
   const removeFavorite = (movieId) => {
     fetch(`${APP_API}/users/${user._id}/movies/${movieId}`, {
       method: "DELETE",
@@ -119,6 +151,10 @@ export const MainView = () => {
       });
   };
 
+  /**
+   * Sets the what movies are shown depending on the string
+   * @param {*} input string for a movie search
+   */
   const filter = (input) => {
     setMoviesView(
       movies.filter((m) => {

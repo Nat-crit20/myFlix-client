@@ -7,6 +7,11 @@ export const LoginView = ({ onLogin }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  /**
+   * Login into the application
+   * Add the user and the token to the local storage
+   * @param {*} e
+   */
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -29,7 +34,8 @@ export const LoginView = ({ onLogin }) => {
         if (data.user) {
           localStorage.setItem("user", JSON.stringify(data.user));
           localStorage.setItem("token", data.token);
-          onLogin(data.user, data.token);
+
+          onLogin(data.user, data.token); //method passed down from the main view
         } else {
           alert("Username or Password is wrong");
         }

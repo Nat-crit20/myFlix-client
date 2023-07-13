@@ -10,6 +10,10 @@ export const SignUpView = () => {
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
 
+  /**
+   * Submits an API post request to create a user
+   * @param {*} e event being fired (button)
+   */
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = {
