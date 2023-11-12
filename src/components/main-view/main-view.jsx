@@ -3,6 +3,7 @@ import { LoginView } from "../login-view/login-view";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { SignUpView } from "../signup-view/signup-view";
+import { GalleryView } from "../gallery-view/gallery-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { Row, Col, Container } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
@@ -23,6 +24,7 @@ export const MainView = () => {
     user ? [...user.FavoriteMovies] : []
   );
   const [movieView, setMoviesView] = useState([]);
+  const [gallery, setGallery] = useState([]);
 
   /**
    * Checks if there is a token in the local storage
@@ -38,6 +40,8 @@ export const MainView = () => {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
+        "Access-Control-Allow-Origin":
+          "http://my-flix-api-332483673.eu-central-1.elb.amazonaws.com/",
       },
     })
       .then((res) => {
@@ -63,6 +67,28 @@ export const MainView = () => {
     setMoviesView(movies);
   }, [movies]);
 
+  useEffect(() => {
+    fetch(`${APP_API}/list-images`, {
+      method: "GET",
+      headers: {
+        "Access-Control-Allow-Origin":
+          "http://my-flix-api-332483673.eu-central-1.elb.amazonaws.com/",
+      },
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        const newGallery = data.Contents.map((image) => {
+          return image.Key;
+        });
+        setGallery(newGallery);
+        console.log(gallery);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   /**
    * Makes an API delete request to remove a user
    * Clears the user and token states
@@ -73,6 +99,8 @@ export const MainView = () => {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,
+        "Access-Control-Allow-Origin":
+          "http://my-flix-api-332483673.eu-central-1.elb.amazonaws.com/",
       },
     })
       .then((res) => {
@@ -111,6 +139,8 @@ export const MainView = () => {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
+        "Access-Control-Allow-Origin":
+          "http://my-flix-api-332483673.eu-central-1.elb.amazonaws.com/",
       },
     })
       .then((res) => {
@@ -139,6 +169,8 @@ export const MainView = () => {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,
+        "Access-Control-Allow-Origin":
+          "http://my-flix-api-332483673.eu-central-1.elb.amazonaws.com/",
       },
     })
       .then((res) => {
@@ -275,6 +307,30 @@ export const MainView = () => {
                       />
                     </Col>
                   )}
+                </>
+              }
+            />
+            <Route
+              path="/gallery"
+              element={
+                <>
+                  <>
+                    {!user ? (
+                      <Navigate to={"/login"} replace />
+                    ) : (
+                      <Col>
+                        <GalleryView
+                          gallery={gallery}
+                          addImage={(imageName) => {
+                            setGallery((prevGallery) => [
+                              ...prevGallery,
+                              imageName,
+                            ]);
+                          }}
+                        />
+                      </Col>
+                    )}
+                  </>
                 </>
               }
             />

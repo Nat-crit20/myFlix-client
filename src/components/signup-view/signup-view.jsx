@@ -30,6 +30,8 @@ export const SignUpView = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Allowed-Origins":
+          "http://my-flix-api-332483673.eu-central-1.elb.amazonaws.com/",
       },
       body: JSON.stringify(data),
     }).then((res) => {

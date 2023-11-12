@@ -41,11 +41,13 @@ export const ProfileView = ({
       Birthday: birthday,
       Email: email,
     };
-    fetch(`https://blooming-shore-67354.herokuapp.com/users/${user._id}`, {
+    fetch(`http://my-flix-api-332483673.eu-central-1.elb.amazonaws.com/${user._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
+        "Access-Control-Allow-Origin":
+          "http://my-flix-api-332483673.eu-central-1.elb.amazonaws.com/",
       },
       body: JSON.stringify(data),
     })

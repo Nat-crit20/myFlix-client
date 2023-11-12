@@ -1,6 +1,7 @@
-import { Button, Col, Row, Container } from "react-bootstrap";
+import { Button, Col, Row, Container, Image } from "react-bootstrap";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+import { APP_API } from "../../constants";
 
 /**
  * Movie View
@@ -8,8 +9,8 @@ import { Link } from "react-router-dom";
  */
 export const MovieView = ({ movies }) => {
   const { movieId } = useParams();
-
   const movie = movies.find((m) => m._id === movieId);
+
   return (
     <Container className="movie-view md-3">
       <Col>
