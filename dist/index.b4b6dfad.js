@@ -41351,10 +41351,10 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "APP_API", ()=>APP_API);
 parcelHelpers.export(exports, "HEADERS", ()=>HEADERS);
-const APP_API = "http://my-flix-api-332483673.eu-central-1.elb.amazonaws.com";
+const APP_API = "https://blooming-shore-67354.herokuapp.com";
 const HEADERS = {
     "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "http://my-flix-api-332483673.eu-central-1.elb.amazonaws.com/"
+    "Access-Control-Allow-Origin": "https://blooming-shore-67354.herokuapp.com"
 };
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"kKf3t"}],"uvMw5":[function(require,module,exports) {
@@ -63451,20 +63451,11 @@ const NavigationBar = ({ user, onLoggedOut, onFilter })=>{
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
                                             as: (0, _reactRouterDom.Link),
-                                            to: "/gallery",
-                                            children: "Gallery"
-                                        }, void 0, false, {
-                                            fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                            lineNumber: 38,
-                                            columnNumber: 17
-                                        }, undefined),
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
-                                            as: (0, _reactRouterDom.Link),
                                             to: "/profile",
                                             children: "Profile"
                                         }, void 0, false, {
                                             fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                            lineNumber: 41,
+                                            lineNumber: 38,
                                             columnNumber: 17
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
@@ -63472,7 +63463,7 @@ const NavigationBar = ({ user, onLoggedOut, onFilter })=>{
                                             children: "Logout"
                                         }, void 0, false, {
                                             fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                            lineNumber: 44,
+                                            lineNumber: 41,
                                             columnNumber: 17
                                         }, undefined)
                                     ]
@@ -63495,12 +63486,12 @@ const NavigationBar = ({ user, onLoggedOut, onFilter })=>{
                                     onChange: (e)=>setQuery(e.target.value)
                                 }, void 0, false, {
                                     fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                    lineNumber: 51,
+                                    lineNumber: 48,
                                     columnNumber: 17
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                lineNumber: 50,
+                                lineNumber: 47,
                                 columnNumber: 15
                             }, undefined)
                         }, void 0, false)
@@ -63883,136 +63874,66 @@ $RefreshReg$(_c, "ProfileView");
   window.$RefreshSig$ = prevRefreshSig;
 }
 },{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","../movie-card/movie-card":"bwuIu","react-bootstrap/Modal":"aNVmp","@parcel/transformer-js/src/esmodule-helpers.js":"kKf3t","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"uvMw5"}],"kPQtV":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$4a5a = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$4a5a.prelude(module);
+/*
+import { Button, Col, Row, Container, Image, Form } from "react-bootstrap";
+import { APP_API } from "../../constants";
+import { useState } from "react";
 
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "GalleryView", ()=>GalleryView);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _reactBootstrap = require("react-bootstrap");
-var _constants = require("../../constants");
-var _react = require("react");
-var _s = $RefreshSig$();
-const GalleryView = ({ gallery, addImage })=>{
-    _s();
-    const [file, setFile] = (0, _react.useState)(null);
-    const handleFileChange = (e)=>{
-        setFile(e.target.files[0]);
-    };
-    const handleSubmit = async (e)=>{
-        e.preventDefault();
-        const formData = new FormData();
-        formData.append("image", file);
-        try {
-            // Replace 'http://localhost:3000/upload' with your server endpoint
-            const response = await fetch(`${(0, _constants.APP_API)}/upload-image`, {
-                method: "POST",
-                body: formData
-            });
-            if (response.ok) {
-                const data = await response.json();
-                setTimeout(window.location.reload(), 2000);
-                console.log("File uploaded successfully:", data.message);
-            } else console.error("Error uploading file:", response.statusText);
-        } catch (error) {
-            console.error("Error uploading file:", error.message);
-        }
-    };
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
-                className: "justify-content-md-center",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                            children: "Upload an Image to the Gallery"
-                        }, void 0, false, {
-                            fileName: "src/components/gallery-view/gallery-view.jsx",
-                            lineNumber: 40,
-                            columnNumber: 11
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
-                            onSubmit: handleSubmit,
-                            children: [
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                    children: [
-                                        "Choose Image:",
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                            type: "file",
-                                            onChange: handleFileChange
-                                        }, void 0, false, {
-                                            fileName: "src/components/gallery-view/gallery-view.jsx",
-                                            lineNumber: 44,
-                                            columnNumber: 15
-                                        }, undefined)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "src/components/gallery-view/gallery-view.jsx",
-                                    lineNumber: 42,
-                                    columnNumber: 13
-                                }, undefined),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                    type: "submit",
-                                    children: "Upload File"
-                                }, void 0, false, {
-                                    fileName: "src/components/gallery-view/gallery-view.jsx",
-                                    lineNumber: 47,
-                                    columnNumber: 13
-                                }, undefined)
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/components/gallery-view/gallery-view.jsx",
-                            lineNumber: 41,
-                            columnNumber: 11
-                        }, undefined)
-                    ]
-                }, void 0, true, {
-                    fileName: "src/components/gallery-view/gallery-view.jsx",
-                    lineNumber: 39,
-                    columnNumber: 9
-                }, undefined)
-            }, void 0, false, {
-                fileName: "src/components/gallery-view/gallery-view.jsx",
-                lineNumber: 38,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                children: gallery.map((imageName)=>{
-                    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Image), {
-                        src: `${(0, _constants.APP_API)}/view-image/${imageName}`,
-                        rounded: true
-                    }, void 0, false, {
-                        fileName: "src/components/gallery-view/gallery-view.jsx",
-                        lineNumber: 53,
-                        columnNumber: 18
-                    }, undefined);
-                })
-            }, void 0, false, {
-                fileName: "src/components/gallery-view/gallery-view.jsx",
-                lineNumber: 51,
-                columnNumber: 7
-            }, undefined)
-        ]
-    }, void 0, true, {
-        fileName: "src/components/gallery-view/gallery-view.jsx",
-        lineNumber: 37,
-        columnNumber: 5
-    }, undefined);
+export const GalleryView = ({ gallery, addImage }) => {
+  const [file, setFile] = useState(null);
+
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("image", file);
+
+    try {
+      // Replace 'http://localhost:3000/upload' with your server endpoint
+      const response = await fetch(`${APP_API}/upload-image`, {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setTimeout(window.location.reload(), 2000);
+        console.log("File uploaded successfully:", data.message);
+      } else {
+        console.error("Error uploading file:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error uploading file:", error.message);
+    }
+  };
+  return (
+    <Container>
+      <Row className="justify-content-md-center">
+        <Col>
+          <h1>Upload an Image to the Gallery</h1>
+          <form onSubmit={handleSubmit}>
+            <label>
+              Choose Image:
+              <input type="file" onChange={handleFileChange} />
+            </label>
+
+            <button type="submit">Upload File</button>
+          </form>
+        </Col>
+      </Row>
+      <div>
+        {gallery.map((imageName) => {
+          return <Image src={`${APP_API}/view-image/${imageName}`} rounded />;
+        })}
+      </div>
+    </Container>
+  );
 };
-_s(GalleryView, "Nkb8eHkBruGouXteoqeZ1R6wRVk=");
-_c = GalleryView;
-var _c;
-$RefreshReg$(_c, "GalleryView");
-
-  $parcel$ReactRefreshHelpers$4a5a.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"kKf3t","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"uvMw5","react":"21dqq","react-bootstrap":"3AD9A","../../constants":"3huJa"}],"lJZlQ":[function() {},{}]},["4vBsG","b48Bu","d8Dch"], "d8Dch", "parcelRequireaec4")
+*/ 
+},{}],"lJZlQ":[function() {},{}]},["4vBsG","b48Bu","d8Dch"], "d8Dch", "parcelRequireaec4")
 
 //# sourceMappingURL=index.b4b6dfad.js.map

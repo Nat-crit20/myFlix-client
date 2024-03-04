@@ -1,3 +1,4 @@
+/*
 import { Button, Col, Row, Container, Image, Form } from "react-bootstrap";
 import { APP_API } from "../../constants";
 import { useState } from "react";
@@ -56,3 +57,4 @@ export const GalleryView = ({ gallery, addImage }) => {
     </Container>
   );
 };
+*/
