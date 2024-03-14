@@ -9,7 +9,6 @@
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
 - [Author](#author)
 
 ## Overview
@@ -40,8 +39,6 @@ This React single page application is the frontend for the [movie-api backend](h
 - React
 - SASS
 - React Bootstrap
-
-### Continued development
 
 ## Author
 
